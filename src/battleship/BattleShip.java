@@ -17,18 +17,22 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferStrategy;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class BattleShip extends JFrame implements Runnable {
 
-    public static final int WIDTH = 1200,HEIGHT = 800;
+    public static final int WIDTH = 1200, HEIGHT = 800;
     private Canvas canvas;
     private Thread thread;
     private boolean running = false;
@@ -50,6 +54,7 @@ public class BattleShip extends JFrame implements Runnable {
     //
     private Home home;
     private JPanel jpheader = new JPanel();
+    public JPanel jscore = new JPanel();
 
     public BattleShip() {
         this.setSize(1200, 850);
@@ -90,20 +95,80 @@ public class BattleShip extends JFrame implements Runnable {
         canvas.addMouseMotionListener(mo);
         canvas.addMouseListener(mou);
         canvas.addMouseWheelListener(mw);
-//        inforpaleyer();
+        inforpaleyer();
         components();
         this.add(canvas);
     }
 
     private void inforpaleyer() {
-        jpheader.setBounds(0, 0, 1200, 100);
+        jpheader.setBounds(0, 0, 1200, 60);
         // custom bg color
-//        Color  colorCustom   = new Color(233, 237, 201);
-        jpheader.setBackground(Color.GREEN);
+        Color colorCustom = new Color(233, 237, 201);
+        jpheader.setBackground(colorCustom);
         jpheader.setLayout(null);
-        JButton buttonPlay = new JButton("Tẹt");
-        jpheader.add(buttonPlay);
-        buttonPlay.setBounds(50, 20, 120, 30);
+        JButton player = new JButton();
+        JLabel nameplayer = new JLabel("Xuân Diệu");
+        JButton bot = new JButton();
+        JLabel namebot = new JLabel("Bot Pờ Rồ");
+        player.setBounds(25, 5, 50, 50);
+        //
+        ImageIcon icon = new ImageIcon("Images/img/You.png");
+        Image img = icon.getImage();
+        Image newimg = img.getScaledInstance(player.getWidth(), player.getHeight(), java.awt.Image.SCALE_SMOOTH);
+        icon = new ImageIcon(newimg);
+        player.setIcon(icon);
+        //
+        nameplayer.setBounds(80, 5, 100, 50);
+        bot.setBounds(610, 5, 50, 50);
+        //
+        ImageIcon icon1 = new ImageIcon("Images/img/Bot.png");
+        Image img1 = icon1.getImage();
+        Image newimg1 = img1.getScaledInstance(bot.getWidth(), bot.getHeight(), java.awt.Image.SCALE_SMOOTH);
+        icon1 = new ImageIcon(newimg1);
+        bot.setIcon(icon1);
+        //
+        namebot.setBounds(665, 5, 100, 50);
+        jpheader.add(player);
+        jpheader.add(bot);
+        jpheader.add(namebot);
+        jpheader.add(nameplayer);
+        this.getContentPane().add(jpheader);
+    }
+    
+    private void scorePlayer() {
+        jscore.setBounds(0, 0, 1200, 60);
+        // custom bg color
+        JButton hitPlayer = new JButton();
+        
+        Color colorCustom = new Color(233, 237, 201);
+        jpheader.setBackground(colorCustom);
+        jpheader.setLayout(null);
+        JButton player = new JButton();
+        JLabel nameplayer = new JLabel("Xuân Diệu");
+        JButton bot = new JButton();
+        JLabel namebot = new JLabel("Bot Pờ Rồ");
+        player.setBounds(25, 5, 50, 50);
+        //
+        ImageIcon icon = new ImageIcon("Images/img/You.png");
+        Image img = icon.getImage();
+        Image newimg = img.getScaledInstance(player.getWidth(), player.getHeight(), java.awt.Image.SCALE_SMOOTH);
+        icon = new ImageIcon(newimg);
+        player.setIcon(icon);
+        //
+        nameplayer.setBounds(80, 5, 100, 50);
+        bot.setBounds(610, 5, 50, 50);
+        //
+        ImageIcon icon1 = new ImageIcon("Images/img/Bot.png");
+        Image img1 = icon1.getImage();
+        Image newimg1 = img1.getScaledInstance(bot.getWidth(), bot.getHeight(), java.awt.Image.SCALE_SMOOTH);
+        icon1 = new ImageIcon(newimg1);
+        bot.setIcon(icon1);
+        //
+        namebot.setBounds(665, 5, 100, 50);
+        jpheader.add(player);
+        jpheader.add(bot);
+        jpheader.add(namebot);
+        jpheader.add(nameplayer);
         this.getContentPane().add(jpheader);
     }
 

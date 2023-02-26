@@ -183,7 +183,7 @@ public class Mouse implements MouseListener {
             }
         }
     }
-
+    // Đếm số lần đã bắn
     private int SumShot() {
         int count = 0;
         for (int j = 0; j < 10; j++) {
@@ -195,7 +195,7 @@ public class Mouse implements MouseListener {
         }
         return count;
     }
-
+    // Tính tổng điểm người chơi
     private long CalcSumScore(int sumshot, int typeShip) {
         long sum = 0;
         int x;
@@ -224,7 +224,7 @@ public class Mouse implements MouseListener {
                 sum += (20 * x);
                 break;
         }
-        System.out.println("Điểm lần bắn:"+sum);
+        System.out.println("Điểm lần bắn hiện tại:"+sum);
         return sum;
     }
 

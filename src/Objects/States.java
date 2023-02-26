@@ -3,7 +3,7 @@ package Objects;
 import Images.Load;
 import battleship.BattleShip;
 import battleship.Home;
-import battleship.Result;
+import battleship.Score;
 import java.awt.Component;
 import java.awt.Graphics;
 import java.util.ArrayList;
@@ -31,13 +31,13 @@ public class States {
     public ArrayList<Hit> hits = new ArrayList<>();
 
     public States() {
-        board = new Board(Load.LoadImage("Board.png"), 20, 60); // y từ 20 tăng lên 60 => +40
-        boardEnemy = new Board(Load.LoadImage("Board.png"), 600, 60);
-        battleship = new Battleship(Load.LoadImage("Battleship.png"), 5, 20, 640);
-        cruise = new Cruise(Load.LoadImage("Cruise.png"), 4, 300, 640);
-        destroyer1 = new Destroyer(Load.LoadImage("Destroyer.png"), 3, 20, 690);
-        destroyer2 = new Destroyer(Load.LoadImage("Destroyer.png"), 3, 200, 690);
-        submarine = new Submarine(Load.LoadImage("Submarine.png"), 2, 370, 690);
+        board = new Board(Load.LoadImage("Board.png"), 25, 60); // y từ 20 tăng lên 60 => +40
+        boardEnemy = new Board(Load.LoadImage("Board.png"), 610, 60);
+        battleship = new Battleship(Load.LoadImage("Battleship.png"), 5, 20, 620);
+        cruise = new Cruise(Load.LoadImage("Cruise.png"), 4, 300, 620);
+        destroyer1 = new Destroyer(Load.LoadImage("Destroyer.png"), 3, 20, 680);
+        destroyer2 = new Destroyer(Load.LoadImage("Destroyer.png"), 3, 200, 680);
+        submarine = new Submarine(Load.LoadImage("Submarine.png"), 2, 370, 680);
         enemy = new Enemy(this);
         //
         
@@ -87,17 +87,17 @@ public class States {
                 JOptionPane.showMessageDialog(null, "Bạn đã thắng");
                 start = false;
                 endgame = true;
-                Result rs =  new Result();
+                Score rs =  new Score();
                 rs.setVisible(true);
-                System.out.println("Điểm của bạn là:"+scorePlayer);
+//                System.out.println("Điểm của bạn là:"+scorePlayer);
                 rs.jTextField1.setText(String.valueOf(scorePlayer));
             } else if (battleship.getLife() == 0 && cruise.getLife() == 0 && destroyer1.getLife() == 0 && destroyer2.getLife() == 0 && submarine.getLife() == 0) {
                 JOptionPane.showMessageDialog(null, "Bạn đã thua");
                 start = false;
                 endgame = true;
-                Result rs =  new Result();
+                Score rs =  new Score();
                 rs.setVisible(true);
-                System.out.println("Điểm của bạn là:"+scorePlayer);
+//                System.out.println("Điểm của bạn là:"+scorePlayer);
                 rs.jTextField1.setText(String.valueOf(scorePlayer));
             } else if (!turn) {
                 enemy.shot();

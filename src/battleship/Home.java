@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 public class Home extends javax.swing.JFrame {
     private boolean  music = false;
     private BattleShip battleship;
-    private Result result;
+    private Score result;
 
     /**
      * Creates new form Home
