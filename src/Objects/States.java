@@ -3,7 +3,7 @@ package Objects;
 import Images.Load;
 import battleship.BattleShip;
 import battleship.Home;
-import battleship.Result;
+import battleship.Score;
 import java.awt.Component;
 import java.awt.Graphics;
 import java.util.ArrayList;
@@ -87,7 +87,7 @@ public class States {
                 JOptionPane.showMessageDialog(null, "Bạn đã thắng");
                 start = false;
                 endgame = true;
-                Result rs =  new Result();
+                Score rs =  new Score();
                 rs.setVisible(true);
 //                System.out.println("Điểm của bạn là:"+scorePlayer);
                 rs.jTextField1.setText(String.valueOf(scorePlayer));
@@ -95,7 +95,7 @@ public class States {
                 JOptionPane.showMessageDialog(null, "Bạn đã thua");
                 start = false;
                 endgame = true;
-                Result rs =  new Result();
+                Score rs =  new Score();
                 rs.setVisible(true);
 //                System.out.println("Điểm của bạn là:"+scorePlayer);
                 rs.jTextField1.setText(String.valueOf(scorePlayer));
