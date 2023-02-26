@@ -1,7 +1,7 @@
 package Input;
 
-import Objects.Ships;
-import Objects.States;
+import Model.Ships;
+import Model.States;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 

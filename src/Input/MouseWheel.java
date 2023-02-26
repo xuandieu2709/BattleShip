@@ -1,6 +1,6 @@
 package Input;
 
-import Objects.Ships;
+import Model.Ships;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 
