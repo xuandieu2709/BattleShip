@@ -33,7 +33,7 @@ public class History extends javax.swing.JFrame {
         tableModel.addColumn("Kết quả");
         for (Score score : scores) {
             Object[] row = {score.getName(), score.getTimeplay(), score.getScore(),
-                score.getSumHit(), score.getSumMiss(), score.getLevel(),score.isResult()};
+                score.getSumHit(), score.getSumMiss(), (score.getLevel() == 1?"Dễ":"Khó"),(score.isResult() == true?"Thắng":"Thua")};
             tableModel.addRow(row);
         }
 // Thiết lập DefaultTableModel cho JTable
@@ -119,6 +119,7 @@ public class History extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
