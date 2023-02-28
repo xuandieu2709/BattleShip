@@ -104,7 +104,7 @@ public class States {
                 LocalDateTime currentDateTime = LocalDateTime.now();
                 Model.Score score = new Model.Score();
                 List<Model.Score> list = score.ReadFile();
-                Model.Score score1 = new Model.Score("Noname",String.valueOf(currentDateTime),scorePlayer,sumHitPlayer,sumMissPlayer,1);
+                Model.Score score1 = new Model.Score("Noname",String.valueOf(currentDateTime),scorePlayer,sumHitPlayer,sumMissPlayer,1,true);
                 list.add(score1);
                 score.WriteFile(list);
             } else if (battleship.getLife() == 0 && cruise.getLife() == 0 && destroyer1.getLife() == 0 && destroyer2.getLife() == 0 && submarine.getLife() == 0) {
@@ -119,7 +119,7 @@ public class States {
                 LocalDateTime currentDateTime = LocalDateTime.now();
                 Model.Score score = new Model.Score();
                 List<Model.Score> list = score.ReadFile();
-                Model.Score score1 = new Model.Score("Noname",String.valueOf(currentDateTime),scorePlayer,sumHitPlayer,sumMissPlayer,1);
+                Model.Score score1 = new Model.Score("Noname",String.valueOf(currentDateTime),scorePlayer,sumHitPlayer,sumMissPlayer,1,false);
                 list.add(score1);
                 score.WriteFile(list);
             } else if (!turn) {
