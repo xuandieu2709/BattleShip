@@ -14,7 +14,7 @@ public class Board implements GameObject
     private final int X;
     private final int Y;
     public int boxBoard[][] = new int[100][4];
-       /* Mảng boxBoard có 100 phần tử, tương ứng với 100 hộp vuông trên bàn cờ. Mỗi phần tử chứa 
+       /* Mảng boxBoard có 100 phần tử, tương ứng với 100 "hộp vuông" trên bàn cờ. Mỗi phần tử chứa 
     một mảng 1 chiều gồm 4 phần tử( x,y góc trên bên trái và x,y góc dưới bên phải)*/
     public Board(BufferedImage img, int X, int Y)
     {

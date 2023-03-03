@@ -15,7 +15,6 @@ public class Enemy implements GameObject {
     public Destroyer destroyer2;
     public Submarine submarine;
     private States ships;
-    private long score;
     public char[][] board
             = {
                 {'*', '*', '*', '*', '*', '*', '*', '*', '*', '*'},
@@ -68,7 +67,7 @@ public class Enemy implements GameObject {
                 if (ships.battleship.getX1() <= X && ships.battleship.getX2() > X && ships.battleship.getY1() <= Y && ships.battleship.getY2() > Y) {
                     ships.battleship.reduceLife();
                     hit = true;
-                    System.out.println("Bắn trúng tàu 5"+(score+=50));
+//                    System.out.println("Bắn trúng tàu 5"+(score+=50));
 //                    int count = 0;
 //                    for(int i = 0;i<10;i++)
 //                        for(int j = 0;j<10;j++)
@@ -79,22 +78,22 @@ public class Enemy implements GameObject {
                 if (ships.cruise.getX1() <= X && ships.cruise.getX2() > X && ships.cruise.getY1() <= Y && ships.cruise.getY2() > Y) {
                     ships.cruise.reduceLife();
                     hit = true;
-                    System.out.println("Bắn trúng tàu 4"+(score+=40));
+//                    System.out.println("Bắn trúng tàu 4"+(score+=40));
                 }
                 if (ships.destroyer1.getX1() <= X && ships.destroyer1.getX2() > X && ships.destroyer1.getY1() <= Y && ships.destroyer1.getY2() > Y) {
                     ships.destroyer1.reduceLife();
                     hit = true;
-                    System.out.println("Bắn trúng tàu 3"+(score+=30));
+//                    System.out.println("Bắn trúng tàu 3"+(score+=30));
                 }
                 if (ships.destroyer2.getX1() <= X && ships.destroyer2.getX2() > X && ships.destroyer2.getY1() <= Y && ships.destroyer2.getY2() > Y) {
                     ships.destroyer2.reduceLife();
                     hit = true;
-                    System.out.println("Bắn trúng tàu 3"+(score+=30));
+//                    System.out.println("Bắn trúng tàu 3"+(score+=30));
                 }
                 if (ships.submarine.getX1() <= X && ships.submarine.getX2() > X && ships.submarine.getY1() <= Y && ships.submarine.getY2() > Y) {
                     ships.submarine.reduceLife();
                     hit = true;
-                    System.out.println("Bắn trúng tàu 2"+(score+=20));
+//                    System.out.println("Bắn trúng tàu 2"+(score+=20));
                 }
                 if (hit) {
                     ships.createHit(true, 0, X, Y);
@@ -106,9 +105,96 @@ public class Enemy implements GameObject {
         }
         ships.turn = true;
     }
+    //
+    public void shotLevelMax() {
+        int x;
+        int y;
+        boolean exist = true;
+        
+        System.out.println("Board You");
+        for(int i=0;i<10;i++)
+            for(int j=0;j<10;j++)
+            {
+                System.out.print(boardEnemy[i][j]);
+                System.out.print("\t");
+                if(j == 9)
+                {
+                    System.out.println("\n");
+                }
+                if(boardEnemy[i][j] == '+' && boardEnemy[i][j] != 'x')
+                {
+                    System.out.println("("+i+":"+j+")");
+                }
+            }
 
-    // Lấy tọa độ của một ô trên bảng
-    private int getBoardPost(int x, int y) {
+//        System.out.println("Board Bot");
+//        for(int i=0;i<10;i++)
+//            for(int j=0;j<10;j++)
+//            {
+//                System.out.print(board[i][j]);
+//                System.out.print("\t");
+//                if(j == 9)
+//                {
+//                    System.out.println("\n");
+//                }
+//                if(board[i][j] == '+' && board[i][j] != 'x')
+//                {
+//                    System.out.println("("+i+":"+j+")");
+//                }
+//            }
+        while (exist) {
+            boolean hit = false;
+            x = (int) (Math.random() * 10);
+            y = (int) (Math.random() * 10);
+            
+//            System.out.println("VT("+x+";"+y+")");
+            if (boardEnemy[y][x] == '*') { // Nếu vị trí trống
+//                boardEnemy[y][x] = 'x'; // Ký tự x đại diện cho vị trí bị bắn trúng
+                int posBor = getBoardPost(x, y);
+                int X = ships.board.boxBoard[posBor][0];
+                int Y = ships.board.boxBoard[posBor][2];
+                System.out.println("X va Y:("+X+":"+Y+")");
+//                System.out.println("Battleship x:"+ships.battleship.getX1()+ships.battleship.getX2());
+//                System.out.println("Battleship y:"+ships.battleship.getY1()+ships.battleship.getY2());
+                if (ships.battleship.getX1() <= X && ships.battleship.getX2() > X && ships.battleship.getY1() <= Y && ships.battleship.getY2() > Y) {
+                    ships.battleship.reduceLife();
+                    hit = true;
+//                    System.out.println("Bắn trúng tàu 5: "+(score+=50));
+                }
+                if (ships.cruise.getX1() <= X && ships.cruise.getX2() > X && ships.cruise.getY1() <= Y && ships.cruise.getY2() > Y) {
+                    ships.cruise.reduceLife();
+                    hit = true;
+//                    System.out.println("Bắn trúng tàu 4"+(score+=40));
+                }
+                if (ships.destroyer1.getX1() <= X && ships.destroyer1.getX2() > X && ships.destroyer1.getY1() <= Y && ships.destroyer1.getY2() > Y) {
+                    ships.destroyer1.reduceLife();
+                    hit = true;
+//                    System.out.println("Bắn trúng tàu 3"+(score+=30));
+                }
+                if (ships.destroyer2.getX1() <= X && ships.destroyer2.getX2() > X && ships.destroyer2.getY1() <= Y && ships.destroyer2.getY2() > Y) {
+                    ships.destroyer2.reduceLife();
+                    hit = true;
+//                    System.out.println("Bắn trúng tàu 3"+(score+=30));
+                }
+                if (ships.submarine.getX1() <= X && ships.submarine.getX2() > X && ships.submarine.getY1() <= Y && ships.submarine.getY2() > Y) {
+                    ships.submarine.reduceLife();
+                    hit = true;
+//                    System.out.println("Bắn trúng tàu 2"+(score+=20));
+                }
+                if (hit) {
+                    ships.createHit(true, 0, X, Y);
+                } else {
+                    ships.createHit(true, 1, X, Y);
+                }
+                exist = false;
+            }
+        }
+        ships.turn = true;
+    }
+    //
+
+    // Lấy vị trí i của một ô trên bảng thông qua tọa độ(x,y)
+    public int getBoardPost(int x, int y) {
         int contx = 0;
         int conty = 0;
         for (int i = 0; i < 100; i++) {
@@ -149,7 +235,7 @@ public class Enemy implements GameObject {
             }
         }
     }
-
+    // 
     private void randomPos() {
         int cont = 0;
         boolean comp = true;
@@ -209,7 +295,7 @@ public class Enemy implements GameObject {
                         if (comp) {
                             destroyer1 = new Destroyer(Load.LoadImage("Destroyer.png"), 3, ships.boardEnemy.boxBoard[pos][0], ships.boardEnemy.boxBoard[pos][2]);
                         } else {
-                            destroyer2 = new Destroyer(Load.LoadImage("Destroyer.png"), 3, ships.boardEnemy.boxBoard[pos][0], ships.boardEnemy.boxBoard[pos][2]);
+                            destroyer2 = new Destroyer(Load.LoadImage("Destroyerr.png"), 3, ships.boardEnemy.boxBoard[pos][0], ships.boardEnemy.boxBoard[pos][2]);
                         }
                         break;
                     case 2:
@@ -232,7 +318,7 @@ public class Enemy implements GameObject {
                             destroyer1 = new Destroyer(Load.LoadImage("Destroyer.png"), 3, ships.boardEnemy.boxBoard[pos][0], ships.boardEnemy.boxBoard[pos][2]);
                             destroyer1.rotateTo90();
                         } else {
-                            destroyer2 = new Destroyer(Load.LoadImage("Destroyer.png"), 3, ships.boardEnemy.boxBoard[pos][0], ships.boardEnemy.boxBoard[pos][2]);
+                            destroyer2 = new Destroyer(Load.LoadImage("Destroyerr.png"), 3, ships.boardEnemy.boxBoard[pos][0], ships.boardEnemy.boxBoard[pos][2]);
                             destroyer2.rotateTo90();
                         }
                         break;
@@ -248,7 +334,6 @@ public class Enemy implements GameObject {
             }
             cont--;
         }
-
     }
 
     @Override
