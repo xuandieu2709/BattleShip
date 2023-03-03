@@ -15,7 +15,7 @@ public abstract class Ships extends Object implements GameObject
     private final BufferedImage imgTo0; // hình ảnh ban đầu của tàu
     protected int life; // số lượng ô trên bàn cờ mà tàu chiếm
     protected long score; // Điểm số
-    private boolean board = false; // check tàu đã được đặt trên bàn cờ hay chưa
+    public boolean board = false; // check tàu đã được đặt trên bàn cờ hay chưa
     public int XStart;
     public int YStart;
     private boolean rotate = false; // check tàu xoay 90 độ chưa

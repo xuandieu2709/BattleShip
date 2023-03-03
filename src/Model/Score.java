@@ -38,6 +38,7 @@ public class Score implements Serializable {
     private int sumMiss;
     private int level;
     private boolean result;
+    private static final String fileName = "src\\Data\\score.txt";
 
     public Score() {
     }
@@ -124,7 +125,7 @@ public class Score implements Serializable {
 
     public void WriteFile(List<Score> scores){
         try {
-            FileOutputStream fos = new FileOutputStream("src\\Data\\score.txt");
+            FileOutputStream fos = new FileOutputStream(fileName);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject(scores);
             oos.close();
@@ -132,7 +133,6 @@ public class Score implements Serializable {
             e.printStackTrace();
         }
         
-        String fileName = "src\\Data\\score.txt";
 //        try (ObjectOutputStream outputStream = new ObjectOutputStream(
 //                new BufferedOutputStream(
 //                        new FileOutputStream(fileName))); OutputStreamWriter streamWriter = new OutputStreamWriter(
@@ -156,7 +156,7 @@ public class Score implements Serializable {
     public List<Score> ReadFile(){
         List<Score> scores = new ArrayList<>();
         try {
-            FileInputStream fis = new FileInputStream("src\\Data\\score.txt");
+            FileInputStream fis = new FileInputStream(fileName);
             ObjectInputStream ois = new ObjectInputStream(fis);
             scores = (List<Score>) ois.readObject();
             ois.close();
@@ -164,7 +164,7 @@ public class Score implements Serializable {
 //                System.out.println(score.getName() + " " + score.getTimeplay() + " " + score.getScore() + " " + score.getSumHit() + " " + score.getSumMiss() + " " + score.getLevel());
 //            }
         } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
         }
         return scores;
 

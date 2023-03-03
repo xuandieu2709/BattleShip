@@ -22,6 +22,7 @@ public class Home extends javax.swing.JFrame {
      */
     public Home() {
         initComponents();
+        this.setDefaultCloseOperation(Home.EXIT_ON_CLOSE);
     }
 
     /**
@@ -41,6 +42,7 @@ public class Home extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(70, 156, 159));
         setResizable(false);
         setSize(new java.awt.Dimension(500, 400));
 
@@ -163,9 +165,12 @@ public class Home extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        setVisible(false); //you can't see me!
-        dispose();
-        new BattleShip().start();
+//        setVisible(false); //you can't see me!
+//        dispose();
+//        new BattleShip().start();
+          this.setVisible(false);
+          dispose();
+          new Level().setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

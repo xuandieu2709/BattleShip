@@ -3,13 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Dell/OneDrive%20-%20hcmunre.edu.vn/Game/BattleShip/src/Main/Score.java</file>
-            <file>file:/C:/Users/Dell/OneDrive%20-%20hcmunre.edu.vn/Game/BattleShip/src/Model/Score.java</file>
+            <file>file:/C:/Users/Dell/OneDrive%20-%20hcmunre.edu.vn/Game/BattleShip/src/Model/Object.java</file>
             <file>file:/C:/Users/Dell/OneDrive%20-%20hcmunre.edu.vn/Game/BattleShip/src/Model/States.java</file>
-            <file>file:/C:/Users/Dell/OneDrive%20-%20hcmunre.edu.vn/Game/BattleShip/src/Main/History.java</file>
-            <file>file:/C:/Users/Dell/OneDrive%20-%20hcmunre.edu.vn/Game/BattleShip/src/Main/BattleShip.java</file>
-            <file>file:/C:/Users/Dell/OneDrive%20-%20hcmunre.edu.vn/Game/BattleShip/src/Model/Hit.java</file>
-            <file>file:/C:/Users/Dell/OneDrive%20-%20hcmunre.edu.vn/Game/BattleShip/src/Main/Home.java</file>
+            <file>file:/C:/Users/Dell/OneDrive%20-%20hcmunre.edu.vn/Game/BattleShip/src/Input/Mouse.java</file>
+            <file>file:/C:/Users/Dell/OneDrive%20-%20hcmunre.edu.vn/Game/BattleShip/src/Model/Board.java</file>
+            <file>file:/C:/Users/Dell/OneDrive%20-%20hcmunre.edu.vn/Game/BattleShip/src/Model/Enemy.java</file>
+            <file>file:/C:/Users/Dell/OneDrive%20-%20hcmunre.edu.vn/Game/BattleShip/src/Model/Ships.java</file>
         </group>
     </open-files>
 </project-private>
