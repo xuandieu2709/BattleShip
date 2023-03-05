@@ -4,18 +4,32 @@
  */
 package Main;
 
-import java.awt.Component;
-import java.beans.Visibility;
-import javax.swing.JOptionPane;
+import Model.States;
+import jaco.mp3.player.MP3Player;
+import java.awt.event.ActionEvent;
+import java.io.File;
+import javax.swing.ImageIcon;
 
 /**
  *
  * @author Dell
  */
 public class Home extends javax.swing.JFrame {
-    private boolean  music = false;
+
     private BattleShip battleship;
     private Score result;
+    private States ships = new States();
+
+    public States getShips() {
+        return ships;
+    }
+
+    public void setShips(States ships) {
+        this.ships = ships;
+    }
+    
+    // SOUND
+    private boolean sound = true;
 
     /**
      * Creates new form Home
@@ -23,6 +37,12 @@ public class Home extends javax.swing.JFrame {
     public Home() {
         initComponents();
         this.setDefaultCloseOperation(Home.EXIT_ON_CLOSE);
+        ships.music = true;
+        if (ships.music == true) {
+            ships.mp3.play();
+        } else {
+            ships.mp3.stop();
+        }
     }
 
     /**
@@ -161,29 +181,72 @@ public class Home extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        ImageIcon iconon = new ImageIcon("src\\source\\sound.png");
+        ImageIcon iconoff = new ImageIcon("src\\source\\x.png");
+        if (ships.music == true) {
+            ships.music = false;
+            jButton1.setIcon(iconoff);
+            ships.mp3.stop();
+        } else {
+            ships.mp3.play();
+            ships.music = true;
+            jButton1.setIcon(iconon);
+
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    // Sound
+    public void music() {
+        if (ships.music == true) {
+            ships.mp3.play();
+        } else {
+            ships.mp3.stop();
+        }
+    }
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
 //        setVisible(false); //you can't see me!
 //        dispose();
 //        new BattleShip().start();
-          this.setVisible(false);
-          dispose();
-          new Level().setVisible(true);
+        this.setVisible(false);
+        dispose();
+        Level lv = new Level();
+        lv.setVisible(true);
+        lv.setShips(ships);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        Component panel = null;
-        // TODO add your handling code here:
-        // Button Exit
-        int n = JOptionPane.showConfirmDialog(
-                panel,
-                "Bạn có muốn thoát không?",
-                "Thoát",
-                JOptionPane.YES_NO_OPTION);
-        if (n == JOptionPane.YES_OPTION)
+//        Component panel = null;
+//        // TODO add your handling code here:
+//        // Button Exit
+//        int n = JOptionPane.showConfirmDialog(
+//                panel,
+//                "Bạn có muốn thoát không?",
+//                "Thoát",
+//                JOptionPane.YES_NO_OPTION);
+//        if (n == JOptionPane.YES_OPTION)
+//            System.exit(0);
+        Message ms = new Message();
+        ms.setVisible(true);
+        ms.jtext.setText("Bạn có muốn thoát không ?");
+        ms.jclose.addActionListener((ActionEvent a)
+                -> {
+            ms.setVisible(false);
+            ms.dispose();
+        });
+        ms.jconfirm.addActionListener((ActionEvent a)
+                -> {
+            ms.setVisible(false);
+            ms.dispose();
+            this.setVisible(false);
+            dispose();
             System.exit(0);
+        });
+        ms.jcancel.addActionListener((ActionEvent a)
+                -> {
+            ms.setVisible(false);
+            ms.dispose();
+        });
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**

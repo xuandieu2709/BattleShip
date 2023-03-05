@@ -1,5 +1,6 @@
 package Input;
 
+import Model.PointShip;
 import Model.Ships;
 import Model.States;
 import java.awt.event.MouseEvent;
@@ -95,24 +96,43 @@ public class Mouse implements MouseListener {
                     if (ships.board.boxBoard[i][0] <= x && ships.board.boxBoard[i][1] >= x && ships.board.boxBoard[i][2] <= y && ships.board.boxBoard[i][3] >= y && cont < box) {
                         ship.setX(ships.board.boxBoard[i][0]);
                         ship.setY(ships.board.boxBoard[i][2]);
-//                        System.out.println("VT SHip"+ship.getX1()+";"+ship.getX2()+":"+ship.getY1())+";"+ship.getY2());
                         ship.setPosition();
-//                        System.out.println("VT0"+ships.board.boxBoard[i][0]);
-//                        System.out.println("VT1"+ships.board.boxBoard[i][1]);
-//                        System.out.println("VT2"+ships.board.boxBoard[i][2]);
-//                        System.out.println("VT3"+ships.board.boxBoard[i][3]);
-//                        //
-//                        System.out.println("Vi tri i cua tau la"+x+":"+y);
-//                          System.out.println("CHua vi tri tau"+i);
-//                        System.out.println("Tau"+ship.getLife());
+                        for (int a = 0; a < ship.getLife(); a++) {
+                            ships.listPoint.add(new PointShip(ship.position[a][0], ship.position[a][2], false, true));
+//                            ships.listPoint2.add(new PointShip(ship.position[a][0], ship.position[a][2], false, true));
+                        }
+//                        for (PointShip p : ships.listPoint) {
+//                            int a = p.getX();
+//                            int b = p.getY();
+//                            boolean loop = true;
+//                            while (loop) {
+////                                a *= (int) (Math.random() * 3);
+////                                b *= (int) (Math.random() * 3);
+//                                a+= 50;
+//                                b+=50;
+//                                for (int k = 0; k < 100; k++)
+//                                {
+//                                if (ships.board.boxBoard[k][0] <= a && ships.board.boxBoard[k][1] >= a && ships.board.boxBoard[k][2] <= b && ships.board.boxBoard[k][3] >= b && cont < box) {
+//                                    for(PointShip p2 : ships.listPoint2)
+//                                    {
+//                                        if(p2.getX() != p.getX() && p2.getY() != p.getY())
+//                                        {
+//                                            ships.listPoint2.add(new PointShip(a, b, false, false));
+//                                        }
+//                                    }
+////                                    ships.listPoint2.add(new PointShip(a, b, false, false));
+//                                    loop = false;
+//                                    break;
+//                                } 
+//                                }
+//                            }
+//
+//                        }
                         if (isvalid(ship)) {
                             ship.rotateTo0();
                             ship.setX(ship.XStart);
                             ship.setY(ship.YStart);
                         }
-                        //
-                        //
-//                        checkPosHor(i, ship.getLife());
                         break;
                     }
                     if (cont > 8) {
@@ -120,13 +140,37 @@ public class Mouse implements MouseListener {
                     } else {
                         cont++;
                     }
-                    
 
                 } else if (ships.board.boxBoard[i][0] <= x && ships.board.boxBoard[i][1] >= x && ships.board.boxBoard[i][2] <= y && ships.board.boxBoard[i][3] >= y && i < (100 - (10 * (ship.getLife() - 1)))) {
                     ship.setX(ships.board.boxBoard[i][0]);
                     ship.setY(ships.board.boxBoard[i][2]);
                     ship.setPosition();
-                    System.out.println("CHua vi tri tau"+i);
+                    for (int a = 0; a < ship.getLife(); a++) {
+                        ships.listPoint.add(new PointShip(ship.position[a][0], ship.position[a][2], false, true));
+//                        ships.listPoint2.add(new PointShip(ship.position[a][0], ship.position[a][2], false, true));
+                    }
+//                    for (PointShip p : ships.listPoint) {
+//                        int a = p.getX();
+//                        int b = p.getY();
+//                        boolean loop = true;
+//                        while (loop) {
+////                                a *= (int) (Math.random() * 3);
+////                                b *= (int) (Math.random() * 3);
+//                                a+= 50;
+//                                b+=50;
+//                                
+//                                if (ships.board.boxBoard[i][0] <= a && ships.board.boxBoard[i][1] >= a && ships.board.boxBoard[i][2] <= b && ships.board.boxBoard[i][3] >= b) {
+//                                    ships.listPoint2.add(new PointShip(a, b, false, false));
+//                                    loop = false;
+//                                } else {
+////                                    a /= (int) (Math.random() * 3);
+////                                    b /= (int) (Math.random() * 3);
+//                                a-= 50;
+//                                b-=50;
+//                                }
+//                            }
+//
+//                    }
                     if (isvalid(ship)) {
                         ship.rotateTo0();
                         ship.setX(ship.XStart);
@@ -145,116 +189,6 @@ public class Mouse implements MouseListener {
         } catch (Exception ex) {
         }
     }
-    private void checkPosHor(int i,int sizeShip)
-    {
-        if(0 < i && i < 10)
-        {
-            updateValHor(0,i,sizeShip,true);
-        }
-        if(11 < i && i < 20)
-        {
-            String str = String.valueOf(i).substring(1);
-            updateValHor(1,Integer.getInteger(str),sizeShip,true);
-        }
-        if(21 < i && i < 30)
-        {
-            String str = String.valueOf(i).substring(1);
-            updateValHor(2,Integer.getInteger(str),sizeShip,true);
-        }
-        if(31 < i && i < 40)
-        {
-            String str = String.valueOf(i).substring(1);
-            updateValHor(3,Integer.getInteger(str),sizeShip,true);
-        }
-        if(41 < i && i < 50)
-        {
-            String str = String.valueOf(i).substring(1);
-            updateValHor(4,Integer.getInteger(str),sizeShip,true);
-        }
-        if(51 < i && i < 60)
-        {
-            String str = String.valueOf(i).substring(1);
-            updateValHor(5,Integer.getInteger(str),sizeShip,true);
-        }
-        if(61 < i && i < 70)
-        {
-            String str = String.valueOf(i).substring(1);
-            updateValHor(6,Integer.getInteger(str),sizeShip,true);
-        }
-        if(71 < i && i < 80)
-        {
-            String str = String.valueOf(i).substring(1);
-            updateValHor(7,Integer.getInteger(str),sizeShip,true);
-        }
-        if(81 < i && i < 90)
-        {
-            String str = String.valueOf(i).substring(1);
-            updateValHor(8,Integer.getInteger(str),sizeShip,true);
-        }
-        if(91 < i && i < 100)
-        {
-            String str = String.valueOf(i).substring(1);
-            updateValHor(9,Integer.getInteger(str),sizeShip,true);
-        }
-        System.out.println("Board You");
-        for(int a=0;a<10;a++)
-            for(int j=0;j<10;j++)
-            {
-                System.out.print(ships.enemy.boardEnemy[a][j]);
-                System.out.print("\t");
-                if(j == 9)
-                {
-                    System.out.println("\n");
-                }
-                if(ships.enemy.boardEnemy[i][j] == '+' && ships.enemy.boardEnemy[i][j] != 'x')
-                {
-                    System.out.println("("+i+":"+j+")");
-                }
-            }
-    }
-    private void updateValHor(int i,int jfirst,int sizeShip,boolean check)
-    {
-        System.out.println("i va j"+i +":"+jfirst);
-        // check = true : Hor
-        if(check)
-        {
-            switch(sizeShip)
-            {
-                case 5: 
-                    ships.enemy.boardEnemy[i][jfirst] = '+';
-                    ships.enemy.boardEnemy[i][jfirst+1] = '+';
-                    ships.enemy.boardEnemy[i][jfirst+2] = '+';
-                    ships.enemy.boardEnemy[i][jfirst+3] = '+';
-                    ships.enemy.boardEnemy[i][jfirst+4] = '+';
-//                    System.out.println("Value: "+ships.enemy.boardEnemy[i][jfirst]);
-                    System.out.println("Da them vao tau 5");
-                    break;
-                case 4:
-                    ships.enemy.boardEnemy[i][jfirst] = '+';
-                    ships.enemy.boardEnemy[i][jfirst+1] = '+';
-                    ships.enemy.boardEnemy[i][jfirst+2] = '+';
-                    ships.enemy.boardEnemy[i][jfirst+3] = '+';
-                    System.out.println("Da them vao tau 4");
-                    break;
-                case 3:
-                    ships.enemy.boardEnemy[i][jfirst] = '+';
-                    ships.enemy.boardEnemy[i][jfirst+1] = '+';
-                    ships.enemy.boardEnemy[i][jfirst+2] = '+';
-                    System.out.println("Da them vao tau 3");
-                    break;
-                case 2:
-                    ships.enemy.boardEnemy[i][jfirst] = '+';
-                    ships.enemy.boardEnemy[i][jfirst+1] = '+';
-                    System.out.println("Da them vao tau 2");
-                    break;
-            }
-        }
-    }
-    private void checkPosVer(int i)
-    {
-//        if()
-    }
-
     // xử lý sự kiện nhấp chuột của người chơi trên bàn cờ đối thủ
     private void clickboardenemy(int x, int y) {
         if (ships.turn && ships.start) {

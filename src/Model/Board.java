@@ -31,10 +31,10 @@ public class Board implements GameObject
         int cont = 0;
         for (int i = 0; i < 100; i++)
         {
-            boxBoard[i][0] = X + x; // 50
-            boxBoard[i][1] = X + x + 50; // 100
-            boxBoard[i][2] = Y + y; // 50
-            boxBoard[i][3] = Y + y + 50; // 100
+            boxBoard[i][0] = X + x; // X1 50
+            boxBoard[i][1] = X + x + 50; // X2 100
+            boxBoard[i][2] = Y + y; // 50 Y1
+            boxBoard[i][3] = Y + y + 50; // Y2 100    boxBoard hộp vuông tọa độ 1 ô x = y
             x += 50;
             cont++;
             if (cont > 9)

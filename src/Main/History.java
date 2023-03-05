@@ -37,8 +37,8 @@ public class History extends javax.swing.JFrame {
         tableModel.addColumn("Kết quả");
         for (Score score : scores) {
             Object[] row = {score.getName(), score.getTimeplay(), score.getScore(),
-                score.getSumHit(), score.getSumMiss(), (score.getLevel() == 1 ? "Dễ" : "Khó"), (score.isResult() == true ? "Thắng" : "Thua")};
-            tableModel.addRow(row);
+                    score.getSumHit(), score.getSumMiss(), ((score.getLevel() == 3) ? "Khó" : (score.getLevel() == 2) ? "Vừa" : "Dễ"), (score.isResult() == true ? "Thắng" : "Thua")};
+                tableModel.addRow(row);
         }
         // Thiết lập DefaultTableModel cho JTable
         jTable1.setModel(tableModel);
@@ -105,6 +105,7 @@ public class History extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.setOpaque(false);
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -185,7 +186,7 @@ public class History extends javax.swing.JFrame {
             tableModel.addColumn("Kết quả");
             for (Score score : scores) {
                 Object[] row = {score.getName(), score.getTimeplay(), score.getScore(),
-                    score.getSumHit(), score.getSumMiss(), (score.getLevel() == 1 ? "Dễ" : "Khó"), (score.isResult() == true ? "Thắng" : "Thua")};
+                    score.getSumHit(), score.getSumMiss(), ((score.getLevel() == 3) ? "Khó" : (score.getLevel() == 2) ? "Vừa" : "Dễ"), (score.isResult() == true ? "Thắng" : "Thua")};
                 tableModel.addRow(row);
             }
 // Thiết lập DefaultTableModel cho JTable

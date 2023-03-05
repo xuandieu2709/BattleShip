@@ -33,6 +33,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 public class BattleShip extends JFrame implements Runnable {
 
@@ -56,7 +57,6 @@ public class BattleShip extends JFrame implements Runnable {
 
     private MouseWheel mw = new MouseWheel();
     //
-    private Home home;
     private JPanel jpheader = new JPanel();
     public JPanel jscore = new JPanel();
     public JTextField scoreTextfield = new JTextField();
@@ -75,25 +75,52 @@ public class BattleShip extends JFrame implements Runnable {
         this.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                Component panel = null;
-                // TODO add your handling code here:
-                // Button Exit
+//                Component panel = null;
+//                // TODO add your handling code here:
+//                // Button Exit
+//                if (ships.start == true) {
+//                    int n = JOptionPane.showConfirmDialog(
+//                            panel,
+//                            "Trận chiến vẫn chưa kết thúc.\nNếu thoát toàn bộ thành tích trong trận đấu này sẽ mất.\nBạn có muốn thoát không?",
+//                            "Thông báo",
+//                            JOptionPane.YES_NO_OPTION);
+//                    if (n == JOptionPane.YES_OPTION) {
+//                        setVisible(false); //you can't see me!
+//                        dispose();
+//                        new Home().setVisible(true);
+//                    }
+//                } else {
+//                    setVisible(false); //you can't see me!
+//                    dispose();
+//                    new Home().setVisible(true);
+//                }
+                Message ms = new Message();
+                ms.setVisible(true);
                 if (ships.start == true) {
-                    int n = JOptionPane.showConfirmDialog(
-                            panel,
-                            "Trận chiến vẫn chưa kết thúc.\nNếu thoát toàn bộ thành tích trong trận đấu này sẽ mất.\nBạn có muốn thoát không?",
-                            "Thông báo",
-                            JOptionPane.YES_NO_OPTION);
-                    if (n == JOptionPane.YES_OPTION) {
-                        setVisible(false); //you can't see me!
-                        dispose();
-                        new Home().setVisible(true);
-                    }
+                    ms.jtext.setText("<html>Trận chiến vẫn chưa kết thúc.<br>Nếu thoát toàn bộ thành tích trong trận đấu này sẽ mất.<br>Bạn có muốn thoát không?</html>");
+//                    ms.jtext.setSize(400, 400);
+                    ms.jtext.setFont(new java.awt.Font("Times New Roman", 1, 20));
                 } else {
-                    setVisible(false); //you can't see me!
-                    dispose();
-                    new Home().setVisible(true);
+                    ms.jtext.setText("Bạn có muốn thoát không ?");
                 }
+                ms.jclose.addActionListener((ActionEvent a)
+                        -> {
+                    ms.setVisible(false);
+                    ms.dispose();
+                });
+                ms.jconfirm.addActionListener((ActionEvent a)
+                        -> {
+                    new Home().setVisible(true);
+                    ms.setVisible(false);
+                    ms.dispose();
+                    setVisible(false);
+                    dispose();
+                });
+                ms.jcancel.addActionListener((ActionEvent a)
+                        -> {
+                    ms.setVisible(false);
+                    ms.dispose();
+                });
             }
         });
         this.setTitle("Tàu chiến");
@@ -111,10 +138,20 @@ public class BattleShip extends JFrame implements Runnable {
         this.add(canvas);
     }
 
-    private void inforpaleyer() {
+    public States getShips() {
+        return ships;
+    }
+
+    public void setShips(States ships) {
+        this.ships = ships;
+    }
+
+    public void inforpaleyer() {
         jpheader.setBounds(0, 0, 1200, 60);
         // custom bg color
-        Color colorCustom = new Color(233, 237, 201);
+//        Color colorCustom = new Color(233, 237, 201);
+        Color colorCustom = new Color(137, 208, 250);
+//        Color colorCustom = new Color(57, 144, 205);
         jpheader.setBackground(colorCustom);
         jpheader.setLayout(null);
         JButton player = new JButton();
@@ -150,7 +187,9 @@ public class BattleShip extends JFrame implements Runnable {
 
     private void scorePlayer() {
         jscore.setBounds(0, 650, 1200, 100);
-        Color colorCustom = new Color(233, 237, 201);
+//        Color colorCustom = new Color(233, 237, 201);
+        Color colorCustom = new Color(137, 208, 250);
+//        Color colorCustom = new Color(57, 144, 205);
         jscore.setBackground(colorCustom);
         jscore.setLayout(null);
         // custom bg color
@@ -214,6 +253,7 @@ public class BattleShip extends JFrame implements Runnable {
         jscore.add(HitTextfieldBot);
         jscore.add(lbmissbot);
         jscore.add(MissTextfieldBot);
+        jscore.setOpaque(true);
         //
         jscore.setVisible(false);
         this.getContentPane().add(jscore);
@@ -222,14 +262,22 @@ public class BattleShip extends JFrame implements Runnable {
     private void components() {
         jp.setBounds(0, 740, 1200, 100);
         // custom bg color
-        Color colorCustom = new Color(233, 237, 201);
+        Color colorCustom = new Color(137, 208, 250);
+//        Color colorCustom = new Color(57, 144, 205);
         jp.setBackground(colorCustom);
         jp.setLayout(null);
-        JButton buttonPlay = new JButton("Bắt đầu");
+        jp.setOpaque(true);
+        JButton buttonPlay = new JButton();
+        buttonPlay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/btnStart.png")));
         buttonPlay.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-        buttonPlay.setBounds(50, 5, 120, 40);
-        Color colorCustom2 = new Color(70, 156, 159);
-        buttonPlay.setBackground(colorCustom2);
+        buttonPlay.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        buttonPlay.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        buttonPlay.setBounds(700, 0, 140, 50);
+        buttonPlay.setOpaque(false);
+        buttonPlay.setContentAreaFilled(false);
+        buttonPlay.setBorderPainted(false);
+//        Color colorCustom2 = new Color(70, 156, 159);
+//        buttonPlay.setBackground(colorCustom2);
         buttonPlay.addActionListener((ActionEvent e)
                 -> {
             if (ships.battleship.isBoard() && ships.cruise.isBoard() && ships.destroyer1.isBoard() && ships.destroyer2.isBoard() && ships.submarine.isBoard()) {
@@ -240,16 +288,26 @@ public class BattleShip extends JFrame implements Runnable {
                 scorelabel.setVisible(true);
                 scoreTextfield.setVisible(true);
                 JOptionPane.showMessageDialog(null, "Mời bạn chơi trước");
+                //
+                if (ships.levelMax == 2 || ships.levelMax == 3) {
+                    ships.enemy.updateMarkPosShip();
+                }
             } else {
                 JOptionPane.showMessageDialog(null, "Vui lòng đặt tất cả tàu chiến lên sàn đấu");
 //                jp.setVisible(true);
 //                jscore.setVisible(false);
             }
         });
-        JButton buttonreset = new JButton("Sắp xếp lại");
-        buttonreset.setBackground(colorCustom2);
+        JButton buttonreset = new JButton();
+        buttonreset.setOpaque(false);
+        buttonreset.setContentAreaFilled(false);
+        buttonreset.setBorderPainted(false);
+        buttonreset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/btnReset.png")));
+//        buttonreset.setBackground(colorCustom2);
         buttonreset.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-        buttonreset.setBounds(250, 5, 120, 40);
+        buttonreset.setBounds(950, 0, 140, 50);
+        buttonreset.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        buttonreset.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         buttonreset.addActionListener((ActionEvent e)
                 -> {
             if (mo.canMove) {
@@ -259,9 +317,126 @@ public class BattleShip extends JFrame implements Runnable {
 
             }
         });
+        //
+        JButton buttonStop = new JButton();
+        buttonStop.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/btnPause.png")));
+        buttonStop.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+        buttonStop.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        buttonStop.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        buttonStop.setBounds(200, 0, 50, 50);
+        buttonStop.setOpaque(false);
+        buttonStop.setContentAreaFilled(false);
+        buttonStop.setBorderPainted(false);
+        buttonStop.addActionListener((ActionEvent e)
+                -> {
+            Pause ps = new Pause();
+            ps.setVisible(true);
+            ps.setShips(ships);
+            if (ps.getShips().music == true) {
+                ps.buttonSound.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/btnSound.png")));
+            } else {
+                ps.buttonSound.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/btnMutext.png")));
+            }
+            ps.buttonReplay.addActionListener((ActionEvent a)
+                    -> {
+                if (ships.start == true) {
+                    Message ms = new Message();
+                    ms.jtext.setText("<html>Trận chiến vẫn chưa kết thúc.<br>Nếu thoát toàn bộ thành tích trong trận đấu này sẽ mất.<br>Bạn có muốn thoát không?</html>");
+                    ms.setVisible(true);
+                    ms.jtext.setFont(new java.awt.Font("Times New Roman", 1, 20));
+                    //
+                    ms.jclose.addActionListener((ActionEvent ac)
+                            -> {
+                        ms.setVisible(false);
+                        ms.dispose();
+                    });
+                    ms.jconfirm.addActionListener((ActionEvent ac)
+                            -> {
+
+                    });
+                    ms.jcancel.addActionListener((ActionEvent ac)
+                            -> {
+                        ms.setVisible(false);
+                        ms.dispose();
+                    });
+                } else {
+//                    ms.jtext.setText("Bạn có muốn thoát không ?");
+                    ps.setVisible(false);
+                    ps.dispose();
+                    this.setVisible(false);
+                    dispose();
+                    Level lv = new Level();
+                    lv.setVisible(true);
+                    lv.setShips(ships);
+                }
+            });
+            //
+            ps.buttonHome.addActionListener((ActionEvent a)
+                    -> {
+                if (ships.start == true) {
+                    Message ms = new Message();
+                    ms.jtext.setText("<html>Trận chiến vẫn chưa kết thúc.<br>Toàn bộ thành tích trong trận đấu này sẽ mất.<br>Bạn có quay về màn hình chính?</html>");
+                    ms.setVisible(true);
+                    ms.jtext.setFont(new java.awt.Font("Times New Roman", 1, 20));
+                    //
+                    ms.jclose.addActionListener((ActionEvent ac)
+                            -> {
+                        ms.setVisible(false);
+                        ms.dispose();
+                    });
+                    ms.jconfirm.addActionListener((ActionEvent ac)
+                            -> {
+                        ms.setVisible(false);
+                        ms.dispose();
+                        ps.setVisible(false);
+                        ps.dispose();
+                        this.setVisible(false);
+                        dispose();
+                        Home home = new Home();
+                        home.setVisible(true);
+                        home.setShips(ps.getShips());
+                    });
+                    ms.jcancel.addActionListener((ActionEvent ac)
+                            -> {
+                        ms.setVisible(false);
+                        ms.dispose();
+                    });
+                } else {
+//                    ms.jtext.setText("Bạn có muốn thoát không ?");
+                    ps.setVisible(false);
+                    ps.dispose();
+                    this.setVisible(false);
+                    dispose();
+                    Home home = new Home();
+                    home.setVisible(true);
+                    home.setShips(ps.getShips());
+                }
+            });
+            //
+            ps.buttonSound.addActionListener((ActionEvent a)
+                    -> {
+                if (ps.getShips().music == true) {
+                    ships.mp3.stop();
+                    ps.getShips().music = false;
+                    ships.music = ps.getShips().music;
+                    ps.buttonSound.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/btnMutext.png")));
+                } else {
+                    ships.mp3.play();
+                    ps.getShips().music = true;
+                    ships.music = ps.getShips().music;
+                    ps.buttonSound.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/btnSound.png")));
+                }
+            });
+        });
+
         jp.add(buttonPlay);
+
         jp.add(buttonreset);
-        this.getContentPane().add(jp);
+
+        jp.add(buttonStop);
+
+        this.getContentPane()
+                .add(jp);
     }
 
 //    public static void main(String[] args)
@@ -281,8 +456,9 @@ public class BattleShip extends JFrame implements Runnable {
             return;
         }
         g = bs.getDrawGraphics();
-        Color colorCustom = new Color(233, 237, 201);
-//        jp.setBackground(colorCustom);
+//        Color colorCustom = new Color(233, 237, 201);
+        Color colorCustom = new Color(137, 208, 250);
+//        Color colorCustom = new Color(57, 144, 205);
         g.setColor(colorCustom);
         g.fillRect(0, 0, WIDTH, HEIGHT);
         ships.draw(g);
@@ -297,43 +473,11 @@ public class BattleShip extends JFrame implements Runnable {
         MissTextfield.setText(String.valueOf(ships.sumMissPlayer));
         HitTextfieldBot.setText(String.valueOf(ships.sumHitBot));
         MissTextfieldBot.setText(String.valueOf(ships.sumMissBot));
-//        if (ships.enemy.battleship.getLife() == 0 && ships.enemy.cruise.getLife() == 0 && ships.enemy.destroyer1.getLife() == 0 && ships.enemy.destroyer2.getLife() == 0 && ships.enemy.submarine.getLife() == 0) {
-//                JOptionPane.showMessageDialog(null, "Bạn đã thắng");
-//                Score rs = new Score();
-//                rs.setVisible(true);
-//                rs.jTextField1.setText(String.valueOf(ships.scorePlayer));
-//                //
-//                LocalDateTime currentDateTime = LocalDateTime.now();
-//                DateTimeFormatter sm = DateTimeFormatter.ofPattern("hh:mm:ss dd/MM//yyyy");
-//                String strDate = sm.format(currentDateTime);
-//                Model.Score score = new Model.Score();
-//                List<Model.Score> list = score.ReadFile();
-//                Model.Score score1 = new Model.Score("Noname", String.valueOf(strDate), ships.scorePlayer, ships.sumHitPlayer, ships.sumMissPlayer, 1, true);
-//                list.add(score1);
-//                score.WriteFile(list);
-//            } else if (ships.enemy.battleship.getLife() == 0 && ships.enemy.cruise.getLife() == 0 && ships.enemy.destroyer1.getLife() == 0 && ships.enemy.destroyer2.getLife() == 0 && ships.enemy.submarine.getLife() == 0) {
-//                JOptionPane.showMessageDialog(null, "Bạn đã thua");
-//                Score rs = new Score();
-//                rs.setVisible(true);
-////                System.out.println("Điểm của bạn là:"+scorePlayer);
-//                rs.jTextField1.setText(String.valueOf(ships.scorePlayer));
-//                //
-//                LocalDateTime currentDateTime = LocalDateTime.now();
-//                DateTimeFormatter sm = DateTimeFormatter.ofPattern("hh:mm:ss dd/MM//yyyy");
-//                String strDate = sm.format(currentDateTime);
-//                Model.Score score = new Model.Score();
-//                List<Model.Score> list = score.ReadFile();
-//                Model.Score score1 = new Model.Score("Noname", String.valueOf(strDate), ships.scorePlayer, ships.sumHitPlayer, ships.sumMissPlayer, 1, false);
-//                list.add(score1);
-//                score.WriteFile(list);
-//            }
-        //
-
     }
 
     @Override
     public void run() {
-        int count = 0,count1 = 0, count2 = 0;
+        int count = 0, count1 = 0, count2 = 0;
         long now = 0;
         long lastTime = System.nanoTime();
         int frames = 0;
@@ -359,8 +503,6 @@ public class BattleShip extends JFrame implements Runnable {
                 count2++;
             }
         }
-//        this.stop();
-        //
     }
 
     public void start() {

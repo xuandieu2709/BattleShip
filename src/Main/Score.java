@@ -8,6 +8,7 @@ import Model.States;
 import java.awt.Component;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 
@@ -18,7 +19,8 @@ import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 public class Score extends javax.swing.JFrame {
 
     public Home home;
-    public States ships = new States();
+    public States ships;
+    public int level;
 
     /**
      * Creates new form Result
@@ -50,6 +52,7 @@ public class Score extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
+        jbtext = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(70, 156, 159));
@@ -58,6 +61,7 @@ public class Score extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(70, 156, 159));
         jPanel1.setAutoscrolls(true);
+        jPanel1.setOpaque(false);
 
         jButton1.setBackground(new java.awt.Color(38, 70, 83));
         jButton1.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
@@ -96,6 +100,10 @@ public class Score extends javax.swing.JFrame {
             }
         });
 
+        jbtext.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        jbtext.setText("jbtext");
+        jbtext.setToolTipText("");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -106,7 +114,8 @@ public class Score extends javax.swing.JFrame {
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField1)
+                    .addComponent(jbtext, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(57, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -114,11 +123,13 @@ public class Score extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jbtext)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addGap(36, 36, 36)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
+                .addGap(34, 34, 34)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34))
         );
@@ -144,9 +155,33 @@ public class Score extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        new BattleShip().start();
         setVisible(false); //you can't see me!
         dispose();
+        new Level().setVisible(true);
+//        BattleShip bt = new BattleShip();
+//        switch (level) {
+//            case 1:
+//                bt.start();
+//                setVisible(false); //you can't see me!
+//                dispose();
+//                bt.getShips().levelMax = 1;
+//                break;
+//            case 2:
+//                bt.start();
+//                setVisible(false); //you can't see me!
+//                dispose();
+//                bt.getShips().levelMax = 2;
+//                break;
+//            case 3:
+//                bt.start();
+//                setVisible(false); //you can't see me!
+//                dispose();
+//                bt.getShips().levelMax = 1;
+//                break;
+//        }
+//        new BattleShip().start();
+//        setVisible(false); //you can't see me!
+//        dispose();
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -202,5 +237,6 @@ public class Score extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     public javax.swing.JTextField jTextField1;
+    public javax.swing.JLabel jbtext;
     // End of variables declaration//GEN-END:variables
 }

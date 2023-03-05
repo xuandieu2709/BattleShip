@@ -4,9 +4,11 @@ import Images.Load;
 import Main.BattleShip;
 import Main.Home;
 import Main.Score;
+import jaco.mp3.player.MP3Player;
 import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -28,7 +30,7 @@ public class States {
     public Board board;
     public Board boardEnemy;
     public Enemy enemy;
-    public boolean levelMax; // true : khó ;; false : dễ
+    public int levelMax; // true : khó ;; false : dễ
     public long scorePlayer;
     public int sumHitPlayer = 0;
     public int sumMissPlayer = 0;
@@ -38,8 +40,13 @@ public class States {
     public boolean start = false; // trạng thái trò chơi
     public boolean endgame = false; // Kết thúc trận đấu
     public boolean checkWin; // thắng hay thua
+    public boolean music;
     public ArrayList<Hit> hitsEnemy = new ArrayList<>();
     public ArrayList<Hit> hits = new ArrayList<>();
+    public List<PointShip> listPoint = new ArrayList<>(); // Chứa 17 tọa độ có vị trí của tàu
+    public List<PointShip> listPoint2 = new ArrayList<>(); // Chứa 17 tọa độ có vị trí của tàu và 17 không có
+    public static final String source = ("src\\Sound\\Battleship.mp3");
+    public MP3Player mp3 = new MP3Player(new File(source));
 
     public States() {
         board = new Board(Load.LoadImage("Board.png"), 25, 60); // y từ 20 tăng lên 60 => +40
@@ -51,6 +58,21 @@ public class States {
         submarine = new Submarine(Load.LoadImage("Submarine.png"), 2, 370, 680);
         enemy = new Enemy(this);
         //
+//        for (int i = 0; i < battleship.life; i++) {
+//            listPoint.add(new PointShip(battleship.position[i][0], battleship.position[i][2], false));
+//        }
+//        for (int i = 0; i < cruise.life; i++) {
+//            listPoint.add(new PointShip(cruise.position[i][0], cruise.position[i][2], false));
+//        }
+//        for (int i = 0; i < destroyer1.life; i++) {
+//            listPoint.add(new PointShip(destroyer1.position[i][0], destroyer1.position[i][2], false));
+//        }
+//        for (int i = 0; i < destroyer2.life; i++) {
+//            listPoint.add(new PointShip(destroyer2.position[i][0], destroyer2.position[i][2], false));
+//        }
+//        for (int i = 0; i < submarine.life; i++) {
+//            listPoint.add(new PointShip(submarine.position[i][0], submarine.position[i][2], false));
+//        }
     }
 
     public void resetShips() {
@@ -115,7 +137,18 @@ public class States {
                 String strDate = sm.format(currentDateTime);
                 Model.Score score = new Model.Score();
                 List<Model.Score> list = score.ReadFile();
-                Model.Score score1 = new Model.Score("Noname", String.valueOf(strDate), scorePlayer, sumHitPlayer, sumMissPlayer, 1, true);
+                Model.Score score1 = new Model.Score();
+                switch (levelMax) {
+                    case 3:
+                        score1 = new Model.Score("Noname", String.valueOf(strDate), scorePlayer, sumHitPlayer, sumMissPlayer, 3, true);
+                        break;
+                    case 2:
+                        score1 = new Model.Score("Noname", String.valueOf(strDate), scorePlayer, sumHitPlayer, sumMissPlayer, 2, true);
+                        break;
+                    default:
+                        score1 = new Model.Score("Noname", String.valueOf(strDate), scorePlayer, sumHitPlayer, sumMissPlayer, 1, true);
+                        break;
+                }
                 list.add(score1);
                 score.WriteFile(list);
             } else if (battleship.getLife() == 0 && cruise.getLife() == 0 && destroyer1.getLife() == 0 && destroyer2.getLife() == 0 && submarine.getLife() == 0) {
@@ -125,19 +158,54 @@ public class States {
                 JOptionPane.showMessageDialog(null, "Bạn đã thua");
                 Score rs = new Score();
                 rs.setVisible(true);
-//                System.out.println("Điểm của bạn là:"+scorePlayer);
                 rs.jTextField1.setText(String.valueOf(scorePlayer));
+                switch (levelMax) {
+                    case 1:
+                        rs.jbtext.setText("Dễ");
+                        rs.level = 1;
+                        break;
+                    case 2:
+                        rs.jbtext.setText("Vừa");
+                        rs.level = 2;
+                        break;
+                    case 3:
+                        rs.jbtext.setText("Khó");
+                        rs.level = 3;
+                        break;
+                }
+//                System.out.println("Điểm của bạn là:"+scorePlayer);
                 //
                 LocalDateTime currentDateTime = LocalDateTime.now();
                 DateTimeFormatter sm = DateTimeFormatter.ofPattern("hh:mm:ss dd/MM//yyyy");
                 String strDate = sm.format(currentDateTime);
                 Model.Score score = new Model.Score();
                 List<Model.Score> list = score.ReadFile();
-                Model.Score score1 = new Model.Score("Noname", String.valueOf(strDate), scorePlayer, sumHitPlayer, sumMissPlayer, 1, false);
+                Model.Score score1 = new Model.Score();
+                switch (levelMax) {
+                    case 3:
+                        score1 = new Model.Score("Noname", String.valueOf(strDate), scorePlayer, sumHitPlayer, sumMissPlayer, 3, false);
+                        break;
+                    case 2:
+                        score1 = new Model.Score("Noname", String.valueOf(strDate), scorePlayer, sumHitPlayer, sumMissPlayer, 2, false);
+                        break;
+                    case 1:
+                        score1 = new Model.Score("Noname", String.valueOf(strDate), scorePlayer, sumHitPlayer, sumMissPlayer, 1, false);
+                        break;
+                }
                 list.add(score1);
                 score.WriteFile(list);
             } else if (!turn) {
-                enemy.shotLevelMax();
+                switch (levelMax) {
+                    case 3:
+                        enemy.shotLevelMax();
+                        break;
+                    case 2:
+                        enemy.shotLevelMedium();
+                        break;
+                    default:
+                        enemy.shot();
+                        break;
+                }
             }
         }
     }
