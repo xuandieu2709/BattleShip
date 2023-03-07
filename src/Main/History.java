@@ -5,6 +5,7 @@
 package Main;
 
 import Model.Score;
+import Model.States;
 import java.awt.Component;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +19,16 @@ import javax.swing.table.DefaultTableModel;
  * @author Dell
  */
 public class History extends javax.swing.JFrame {
+
+    private States ships = new States();
+
+    public States getShips() {
+        return ships;
+    }
+
+    public void setShips(States ships) {
+        this.ships = ships;
+    }
 
     /**
      * Creates new form History
@@ -37,8 +48,8 @@ public class History extends javax.swing.JFrame {
         tableModel.addColumn("Kết quả");
         for (Score score : scores) {
             Object[] row = {score.getName(), score.getTimeplay(), score.getScore(),
-                    score.getSumHit(), score.getSumMiss(), ((score.getLevel() == 3) ? "Khó" : (score.getLevel() == 2) ? "Vừa" : "Dễ"), (score.isResult() == true ? "Thắng" : "Thua")};
-                tableModel.addRow(row);
+                score.getSumHit(), score.getSumMiss(), ((score.getLevel() == 3) ? "Khó" : (score.getLevel() == 2) ? "Vừa" : "Dễ"), (score.isResult() == true ? "Thắng" : "Thua")};
+            tableModel.addRow(row);
         }
         // Thiết lập DefaultTableModel cho JTable
         jTable1.setModel(tableModel);
@@ -157,7 +168,10 @@ public class History extends javax.swing.JFrame {
         // TODO add your handling code here:
         setVisible(false);
         dispose();
-        new Home().setVisible(true);
+        Home home = new Home(ships.music);
+        home.getShips().music = ships.music;
+        home.getShips().mp3= ships.mp3;
+        home.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

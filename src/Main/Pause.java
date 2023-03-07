@@ -9,13 +9,15 @@ import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 /**
  *
  * @author Dell
  */
-public class Pause extends javax.swing.JFrame {
+public class Pause extends javax.swing.JDialog {
 
     private States ships = new States();
     public States getShips() {
@@ -27,12 +29,24 @@ public class Pause extends javax.swing.JFrame {
     }
     /**
      * Creates new form Pause
+     * @param owner
+     * @param title
+     * @param modal
      */
+    public Pause(JFrame owner, String title,boolean modal) {
+        super(owner,title,modal);
+        initCom();
+    }
+    public Pause(JFrame owner,boolean modal) {
+        super(owner,modal);
+        initCom();
+    }
     public Pause() {
         initCom();
     }
 
     private void initCom() {
+        
         jPanel1 = new JPanel(new FlowLayout(FlowLayout.CENTER)) {
             private final Image backgroundImage = new ImageIcon("src\\Icon\\Pause.png").getImage();
 
@@ -47,7 +61,8 @@ public class Pause extends javax.swing.JFrame {
         buttonHome = new javax.swing.JButton();
         buttonReplay = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+//        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         setUndecorated(true);
 
         jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));

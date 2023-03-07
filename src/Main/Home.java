@@ -27,7 +27,7 @@ public class Home extends javax.swing.JFrame {
     public void setShips(States ships) {
         this.ships = ships;
     }
-    
+
     // SOUND
     private boolean sound = true;
 
@@ -38,6 +38,16 @@ public class Home extends javax.swing.JFrame {
         initComponents();
         this.setDefaultCloseOperation(Home.EXIT_ON_CLOSE);
         ships.music = true;
+        if (ships.music == true) {
+            ships.mp3.play();
+        } else {
+            ships.mp3.stop();
+        }
+    }
+    public Home(boolean music) {
+        initComponents();
+        ships.music = music;
+        this.setDefaultCloseOperation(Home.EXIT_ON_CLOSE);
         if (ships.music == true) {
             ships.mp3.play();
         } else {
@@ -176,6 +186,8 @@ public class Home extends javax.swing.JFrame {
         setVisible(false); //you can't see me!
         dispose();
         History h = new History();
+        h.getShips().music = ships.music;
+        h.getShips().mp3 = ships.mp3;
         h.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -212,7 +224,8 @@ public class Home extends javax.swing.JFrame {
         dispose();
         Level lv = new Level();
         lv.setVisible(true);
-        lv.setShips(ships);
+        lv.getShips().music = ships.music;
+        lv.getShips().mp3 = ships.mp3;
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -226,9 +239,9 @@ public class Home extends javax.swing.JFrame {
 //                JOptionPane.YES_NO_OPTION);
 //        if (n == JOptionPane.YES_OPTION)
 //            System.exit(0);
-        Message ms = new Message();
-        ms.setVisible(true);
+        Message ms = new Message(this, true);
         ms.jtext.setText("Bạn có muốn thoát không ?");
+        ms.jtext.setFont(new java.awt.Font("Times New Roman", 1, 28));
         ms.jclose.addActionListener((ActionEvent a)
                 -> {
             ms.setVisible(false);
@@ -247,6 +260,7 @@ public class Home extends javax.swing.JFrame {
             ms.setVisible(false);
             ms.dispose();
         });
+        ms.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**

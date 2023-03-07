@@ -317,16 +317,16 @@ public class Enemy implements GameObject {
             }
 
         }
-        System.out.println("Board You");
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; j++) {
-                System.out.print(boardEnemy[i][j]);
-                System.out.print("\t");
-                if (j == 9) {
-                    System.out.println("\n");
-                }
-            }
-        }
+//        System.out.println("Board You");
+//        for (int i = 0; i < 10; i++) {
+//            for (int j = 0; j < 10; j++) {
+//                System.out.print(boardEnemy[i][j]);
+//                System.out.print("\t");
+//                if (j == 9) {
+//                    System.out.println("\n");
+//                }
+//            }
+//        }
 
     }
 

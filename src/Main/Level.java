@@ -56,7 +56,7 @@ public class Level extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(70, 156, 159));
-        setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setUndecorated(true);
         setOpacity(1.0F);
         setResizable(false);
@@ -104,6 +104,8 @@ public class Level extends javax.swing.JFrame {
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/btnHD.png"))); // NOI18N
         jButton3.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton3.setOpaque(false);
         jButton3.setContentAreaFilled(false);
         jButton3.setBorderPainted(false);
@@ -277,9 +279,10 @@ public class Level extends javax.swing.JFrame {
         setVisible(false); //you can't see me!
         dispose();
         BattleShip bt = new BattleShip();
-        bt.setShips(ships);
         bt.start();
         bt.getShips().levelMax = 1;
+        bt.getShips().music = ships.music;
+        bt.getShips().mp3 = ships.mp3;
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -287,9 +290,10 @@ public class Level extends javax.swing.JFrame {
         setVisible(false); //you can't see me!
         dispose();
         BattleShip bt = new BattleShip();
-        bt.setShips(ships);
         bt.start();
         bt.getShips().levelMax = 2;
+        bt.getShips().music = ships.music;
+        bt.getShips().mp3 = ships.mp3;
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -298,9 +302,10 @@ public class Level extends javax.swing.JFrame {
         setVisible(false); //you can't see me!
         dispose();
         BattleShip bt = new BattleShip();
-        bt.setShips(ships);
         bt.start();
         bt.getShips().levelMax = 3;
+        bt.getShips().music = ships.music;
+        bt.getShips().mp3 = ships.mp3;
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**

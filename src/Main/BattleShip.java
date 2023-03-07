@@ -65,6 +65,7 @@ public class BattleShip extends JFrame implements Runnable {
     public JTextField HitTextfield = new JTextField();
     public JTextField MissTextfieldBot = new JTextField();
     public JTextField HitTextfieldBot = new JTextField();
+    public JLabel namebot = new JLabel();
 
     public BattleShip() {
         this.setSize(1200, 850);
@@ -75,29 +76,11 @@ public class BattleShip extends JFrame implements Runnable {
         this.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-//                Component panel = null;
-//                // TODO add your handling code here:
-//                // Button Exit
-//                if (ships.start == true) {
-//                    int n = JOptionPane.showConfirmDialog(
-//                            panel,
-//                            "Trận chiến vẫn chưa kết thúc.\nNếu thoát toàn bộ thành tích trong trận đấu này sẽ mất.\nBạn có muốn thoát không?",
-//                            "Thông báo",
-//                            JOptionPane.YES_NO_OPTION);
-//                    if (n == JOptionPane.YES_OPTION) {
-//                        setVisible(false); //you can't see me!
-//                        dispose();
-//                        new Home().setVisible(true);
-//                    }
-//                } else {
-//                    setVisible(false); //you can't see me!
-//                    dispose();
-//                    new Home().setVisible(true);
-//                }
-                Message ms = new Message();
-                ms.setVisible(true);
+                Message ms = new Message((JFrame) e.getWindow(), true);
                 if (ships.start == true) {
-                    ms.jtext.setText("<html>Trận chiến vẫn chưa kết thúc.<br>Nếu thoát toàn bộ thành tích trong trận đấu này sẽ mất.<br>Bạn có muốn thoát không?</html>");
+                    ms.jtext.setText("<html><h2 style='text-align: center;'>Trận chiến vẫn chưa kết thúc."
+                            + "<br>Nếu thoát toàn bộ thành tích trong trận đấu này sẽ mất."
+                            + "<br>Bạn có muốn thoát không?</h2></html>");
 //                    ms.jtext.setSize(400, 400);
                     ms.jtext.setFont(new java.awt.Font("Times New Roman", 1, 20));
                 } else {
@@ -110,7 +93,10 @@ public class BattleShip extends JFrame implements Runnable {
                 });
                 ms.jconfirm.addActionListener((ActionEvent a)
                         -> {
-                    new Home().setVisible(true);
+                    Home home = new Home();
+                    home.setVisible(true);
+                    home.getShips().music = ships.music;
+                    home.getShips().mp3 = ships.mp3;
                     ms.setVisible(false);
                     ms.dispose();
                     setVisible(false);
@@ -121,6 +107,7 @@ public class BattleShip extends JFrame implements Runnable {
                     ms.setVisible(false);
                     ms.dispose();
                 });
+                ms.setVisible(true);
             }
         });
         this.setTitle("Tàu chiến");
@@ -158,7 +145,7 @@ public class BattleShip extends JFrame implements Runnable {
         JLabel nameplayer = new JLabel("Xuân Diệu");
         nameplayer.setFont(new Font("Times New Roman", Font.PLAIN, 16));
         JButton bot = new JButton();
-        JLabel namebot = new JLabel("Bot Pờ Rồ");
+        namebot = new JLabel("Bot Pờ Rồ");
         namebot.setFont(new Font("Times New Roman", Font.PLAIN, 16));
         player.setBounds(25, 5, 50, 50);
         //
@@ -329,21 +316,28 @@ public class BattleShip extends JFrame implements Runnable {
         buttonStop.setBorderPainted(false);
         buttonStop.addActionListener((ActionEvent e)
                 -> {
-            Pause ps = new Pause();
-            ps.setVisible(true);
-            ps.setShips(ships);
+            Pause ps = new Pause(this, true);
+            ps.getShips().music = ships.music;
+            ps.getShips().mp3 = ships.mp3;
             if (ps.getShips().music == true) {
                 ps.buttonSound.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/btnSound.png")));
             } else {
                 ps.buttonSound.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/btnMutext.png")));
             }
+            ps.buttonContunine.addActionListener((ActionEvent a)
+                    -> {
+                ps.setVisible(false);
+                ps.dispose();
+            });
             ps.buttonReplay.addActionListener((ActionEvent a)
                     -> {
                 if (ships.start == true) {
                     Message ms = new Message();
-                    ms.jtext.setText("<html>Trận chiến vẫn chưa kết thúc.<br>Nếu thoát toàn bộ thành tích trong trận đấu này sẽ mất.<br>Bạn có muốn thoát không?</html>");
+                    ms.jtext.setText("<html><h2 style='text-align: center;'>Trận chiến vẫn chưa kết thúc."
+                            + "<br>Nếu thoát toàn bộ thành tích trong trận đấu này sẽ mất."
+                            + "<br>Bạn có muốn thoát không?</h2></html>");
                     ms.setVisible(true);
-                    ms.jtext.setFont(new java.awt.Font("Times New Roman", 1, 20));
+                    ms.jtext.setFont(new java.awt.Font("Times New Roman", 1, 24));
                     //
                     ms.jclose.addActionListener((ActionEvent ac)
                             -> {
@@ -367,18 +361,19 @@ public class BattleShip extends JFrame implements Runnable {
                     dispose();
                     Level lv = new Level();
                     lv.setVisible(true);
-                    lv.setShips(ships);
+                    lv.getShips().music = ships.music;
+                    lv.getShips().mp3 = ships.mp3;
                 }
             });
             //
             ps.buttonHome.addActionListener((ActionEvent a)
                     -> {
                 if (ships.start == true) {
-                    Message ms = new Message();
+                    Message ms = new Message(this, true);
                     ms.jtext.setText("<html>Trận chiến vẫn chưa kết thúc.<br>Toàn bộ thành tích trong trận đấu này sẽ mất.<br>Bạn có quay về màn hình chính?</html>");
-                    ms.setVisible(true);
                     ms.jtext.setFont(new java.awt.Font("Times New Roman", 1, 20));
                     //
+                    ms.setVisible(true);
                     ms.jclose.addActionListener((ActionEvent ac)
                             -> {
                         ms.setVisible(false);
@@ -392,9 +387,10 @@ public class BattleShip extends JFrame implements Runnable {
                         ps.dispose();
                         this.setVisible(false);
                         dispose();
-                        Home home = new Home();
+                        Home home = new Home(ships.music);
+                        home.getShips().music = ships.music;
+                        home.getShips().mp3 = ships.mp3;
                         home.setVisible(true);
-                        home.setShips(ps.getShips());
                     });
                     ms.jcancel.addActionListener((ActionEvent ac)
                             -> {
@@ -407,9 +403,11 @@ public class BattleShip extends JFrame implements Runnable {
                     ps.dispose();
                     this.setVisible(false);
                     dispose();
-                    Home home = new Home();
+                    Home home = new Home(ships.music);
+                    home.getShips().music = ships.music;
+                    home.getShips().mp3 = ships.mp3;
                     home.setVisible(true);
-                    home.setShips(ps.getShips());
+
                 }
             });
             //
@@ -427,6 +425,7 @@ public class BattleShip extends JFrame implements Runnable {
                     ps.buttonSound.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/btnSound.png")));
                 }
             });
+            ps.setVisible(true);
         });
 
         jp.add(buttonPlay);
