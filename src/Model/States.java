@@ -129,9 +129,9 @@ public class States {
                 checkWin = true;
                 JOptionPane.showMessageDialog(null, "Bạn đã thắng");
                 Score rs = new Score();
-                rs.setVisible(true);
                 rs.jTextField1.setText(String.valueOf(scorePlayer));
                 //
+                rs.setVisible(true);
                 LocalDateTime currentDateTime = LocalDateTime.now();
                 DateTimeFormatter sm = DateTimeFormatter.ofPattern("hh:mm:ss dd/MM//yyyy");
                 String strDate = sm.format(currentDateTime);
@@ -157,7 +157,6 @@ public class States {
                 checkWin = false;
                 JOptionPane.showMessageDialog(null, "Bạn đã thua");
                 Score rs = new Score();
-                rs.setVisible(true);
                 rs.jTextField1.setText(String.valueOf(scorePlayer));
                 switch (levelMax) {
                     case 1:
@@ -173,6 +172,7 @@ public class States {
                         rs.level = 3;
                         break;
                 }
+                rs.setVisible(true);
 //                System.out.println("Điểm của bạn là:"+scorePlayer);
                 //
                 LocalDateTime currentDateTime = LocalDateTime.now();
@@ -202,7 +202,7 @@ public class States {
                     case 2:
                         enemy.shotLevelMedium();
                         break;
-                    default:
+                    case 1:
                         enemy.shot();
                         break;
                 }

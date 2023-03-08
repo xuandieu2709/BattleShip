@@ -69,6 +69,8 @@ public class BattleShip extends JFrame implements Runnable {
 
     public BattleShip() {
         this.setSize(1200, 850);
+        ImageIcon img = new ImageIcon("src\\source\\logo.png");
+        this.setIconImage(img.getImage());
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         this.setVisible(true);
@@ -93,10 +95,10 @@ public class BattleShip extends JFrame implements Runnable {
                 });
                 ms.jconfirm.addActionListener((ActionEvent a)
                         -> {
-                    Home home = new Home();
-                    home.setVisible(true);
+                    Home home = new Home(ships.music);
                     home.getShips().music = ships.music;
                     home.getShips().mp3 = ships.mp3;
+                    home.setVisible(true);
                     ms.setVisible(false);
                     ms.dispose();
                     setVisible(false);
@@ -142,10 +144,9 @@ public class BattleShip extends JFrame implements Runnable {
         jpheader.setBackground(colorCustom);
         jpheader.setLayout(null);
         JButton player = new JButton();
-        JLabel nameplayer = new JLabel("Xuân Diệu");
+        JLabel nameplayer = new JLabel("Du");
         nameplayer.setFont(new Font("Times New Roman", Font.PLAIN, 16));
         JButton bot = new JButton();
-        namebot = new JLabel("Bot Pờ Rồ");
         namebot.setFont(new Font("Times New Roman", Font.PLAIN, 16));
         player.setBounds(25, 5, 50, 50);
         //
@@ -173,7 +174,7 @@ public class BattleShip extends JFrame implements Runnable {
     }
 
     private void scorePlayer() {
-        jscore.setBounds(0, 650, 1200, 100);
+        jscore.setBounds(0, 650, 1200, 200);
 //        Color colorCustom = new Color(233, 237, 201);
         Color colorCustom = new Color(137, 208, 250);
 //        Color colorCustom = new Color(57, 144, 205);
@@ -236,11 +237,133 @@ public class BattleShip extends JFrame implements Runnable {
         MissTextfieldBot.setHorizontalAlignment((int) CENTER_ALIGNMENT);
 //        System.out.println("Miss of bot" + ships.sumMissBot);
         //
+        JButton buttonStop = new JButton();
+        buttonStop.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/btnPause.png")));
+        buttonStop.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+        buttonStop.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        buttonStop.setBounds(550, 80, 50, 50);
+        buttonStop.setOpaque(false);
+        buttonStop.setContentAreaFilled(false);
+        buttonStop.setBorderPainted(false);
+        buttonStop.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        buttonStop.addActionListener((ActionEvent e)
+                -> {
+            Pause ps = new Pause(this, true);
+            ps.getShips().music = ships.music;
+            ps.getShips().mp3 = ships.mp3;
+            if (ps.getShips().music == true) {
+                ps.buttonSound.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/btnSound.png")));
+            } else {
+                ps.buttonSound.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/btnMutext.png")));
+            }
+            ps.setVisible(true);
+            ps.buttonContunine.addActionListener((ActionEvent a)
+                    -> {
+                ps.setVisible(false);
+                ps.dispose();
+            });
+            ps.buttonReplay.addActionListener((ActionEvent a)
+                    -> {
+                if (ships.start == true) {
+                    Message ms = new Message();
+                    ms.jtext.setText("<html><h2 style='text-align: center;'>Trận chiến vẫn chưa kết thúc."
+                            + "<br>Nếu thoát toàn bộ thành tích trong trận đấu này sẽ mất."
+                            + "<br>Bạn có muốn thoát không?</h2></html>");
+                    ms.setVisible(true);
+                    ms.jtext.setFont(new java.awt.Font("Times New Roman", 1, 24));
+                    //
+                    ms.jclose.addActionListener((ActionEvent ac)
+                            -> {
+                        ms.setVisible(false);
+                        ms.dispose();
+                    });
+                    ms.jconfirm.addActionListener((ActionEvent ac)
+                            -> {
+
+                    });
+                    ms.jcancel.addActionListener((ActionEvent ac)
+                            -> {
+                        ms.setVisible(false);
+                        ms.dispose();
+                    });
+                } else {
+//                    ms.jtext.setText("Bạn có muốn thoát không ?");
+                    ps.setVisible(false);
+                    ps.dispose();
+                    this.setVisible(false);
+                    dispose();
+                    Level lv = new Level();
+                    lv.setVisible(true);
+                    lv.getShips().music = ships.music;
+                    lv.getShips().mp3 = ships.mp3;
+                }
+            });
+            //
+            ps.buttonHome.addActionListener((ActionEvent a)
+                    -> {
+                if (ships.start == true) {
+                    Message ms = new Message(this, true);
+                    ms.jtext.setText("<html>Trận chiến vẫn chưa kết thúc.<br>Toàn bộ thành tích trong trận đấu này sẽ mất.<br>Bạn có quay về màn hình chính?</html>");
+                    ms.jtext.setFont(new java.awt.Font("Times New Roman", 1, 20));
+                    //
+                    ms.setVisible(true);
+                    ms.jclose.addActionListener((ActionEvent ac)
+                            -> {
+                        ms.setVisible(false);
+                        ms.dispose();
+                    });
+                    ms.jconfirm.addActionListener((ActionEvent ac)
+                            -> {
+                        ms.setVisible(false);
+                        ms.dispose();
+                        ps.setVisible(false);
+                        ps.dispose();
+                        this.setVisible(false);
+                        dispose();
+                        Home home = new Home(ships.music);
+                        home.getShips().music = ships.music;
+                        home.getShips().mp3 = ships.mp3;
+                        home.setVisible(true);
+                    });
+                    ms.jcancel.addActionListener((ActionEvent ac)
+                            -> {
+                        ms.setVisible(false);
+                        ms.dispose();
+                    });
+                } else {
+//                    ms.jtext.setText("Bạn có muốn thoát không ?");
+                    ps.setVisible(false);
+                    ps.dispose();
+                    this.setVisible(false);
+                    dispose();
+                    Home home = new Home(ships.music);
+                    home.getShips().music = ships.music;
+                    home.getShips().mp3 = ships.mp3;
+                    home.setVisible(true);
+                }
+            });
+            //
+            ps.buttonSound.addActionListener((ActionEvent a)
+                    -> {
+                if (ps.getShips().music == true) {
+                    ships.mp3.stop();
+                    ps.getShips().music = false;
+                    ships.music = ps.getShips().music;
+                    ps.buttonSound.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/btnMutext.png")));
+                } else {
+                    ships.mp3.play();
+                    ps.getShips().music = true;
+                    ships.music = ps.getShips().music;
+                    ps.buttonSound.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/btnSound.png")));
+                }
+            });
+        });
         jscore.add(lbhitbot);
         jscore.add(HitTextfieldBot);
         jscore.add(lbmissbot);
         jscore.add(MissTextfieldBot);
         jscore.setOpaque(true);
+        jscore.add(buttonStop);
         //
         jscore.setVisible(false);
         this.getContentPane().add(jscore);
@@ -254,15 +377,17 @@ public class BattleShip extends JFrame implements Runnable {
         jp.setBackground(colorCustom);
         jp.setLayout(null);
         jp.setOpaque(true);
+        jp.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         JButton buttonPlay = new JButton();
         buttonPlay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/btnStart.png")));
         buttonPlay.setFont(new Font("Times New Roman", Font.PLAIN, 16));
         buttonPlay.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        buttonPlay.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         buttonPlay.setBounds(700, 0, 140, 50);
         buttonPlay.setOpaque(false);
         buttonPlay.setContentAreaFilled(false);
         buttonPlay.setBorderPainted(false);
+        buttonPlay.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
 //        Color colorCustom2 = new Color(70, 156, 159);
 //        buttonPlay.setBackground(colorCustom2);
         buttonPlay.addActionListener((ActionEvent e)
@@ -309,11 +434,11 @@ public class BattleShip extends JFrame implements Runnable {
         buttonStop.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/btnPause.png")));
         buttonStop.setFont(new Font("Times New Roman", Font.PLAIN, 16));
         buttonStop.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        buttonStop.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         buttonStop.setBounds(200, 0, 50, 50);
         buttonStop.setOpaque(false);
         buttonStop.setContentAreaFilled(false);
         buttonStop.setBorderPainted(false);
+        buttonStop.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         buttonStop.addActionListener((ActionEvent e)
                 -> {
             Pause ps = new Pause(this, true);

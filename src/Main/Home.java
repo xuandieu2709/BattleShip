@@ -4,14 +4,11 @@
  */
 package Main;
 
-<<<<<<< HEAD
 import Model.States;
 import jaco.mp3.player.MP3Player;
 import java.awt.event.ActionEvent;
 import java.io.File;
 import javax.swing.ImageIcon;
-=======
-import jaco.mp3.player.MP3Player;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Image;
@@ -22,14 +19,12 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
->>>>>>> ecd26d08486b8a65cc7663aabbca2259633d60ca
 
 /**
  *
  * @author Dell
  */
 public class Home extends javax.swing.JFrame {
-<<<<<<< HEAD
 
     private BattleShip battleship;
     private Score result;
@@ -44,32 +39,20 @@ public class Home extends javax.swing.JFrame {
     }
 
     // SOUND
-    private boolean sound = true;
-
-=======
-    
-    private BattleShip battleship;
-    private Score result;
-    private boolean  sound = true;
-    public static final String player = ("src\\source\\Battleship.mp3");
-    MP3Player mp3 = new MP3Player(new File(player));
->>>>>>> ecd26d08486b8a65cc7663aabbca2259633d60ca
     /**
      * Creates new form Home
      */
     public Home() {
-        initComponents();
-<<<<<<< HEAD
-        this.setDefaultCloseOperation(Home.EXIT_ON_CLOSE);
         ships.music = true;
         if (ships.music == true) {
             ships.mp3.play();
         } else {
             ships.mp3.stop();
         }
+        initCompo();
     }
+
     public Home(boolean music) {
-        initComponents();
         ships.music = music;
         this.setDefaultCloseOperation(Home.EXIT_ON_CLOSE);
         if (ships.music == true) {
@@ -77,30 +60,166 @@ public class Home extends javax.swing.JFrame {
         } else {
             ships.mp3.stop();
         }
-=======
-        if(sound==true){
-            mp3.play();
-        }else {
-            mp3.stop();
+        initCompo();
+        // Thiết lập panel cho JFrame
+        // Các thiết lập khác cho JFrame
+        setTitle("Tàu chiến");
+        setSize(550, 600);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(70, 156, 159));
+        setResizable(false);
+        setSize(new java.awt.Dimension(550, 600));
+        // Thiết lập panel cho JFrame
+        setContentPane(jPanel1);
+        setVisible(true);
+    }
+
+    public void initCompo() {
+        jPanel1 = new javax.swing.JPanel();
+        jButton1 = new Main.Button();
+        jButton2 = new Main.Button();
+        jButton5 = new Main.Button();
+        jButton3 = new Main.Button();
+        jButton4 = new Main.Button();
+        jLabel1 = new javax.swing.JLabel();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(70, 156, 159));
+        setPreferredSize(new java.awt.Dimension(550, 600));
+        setResizable(false);
+        setSize(new java.awt.Dimension(550, 600));
+
+        jPanel1.setBackground(new java.awt.Color(70, 156, 159));
+        jPanel1.setPreferredSize(new java.awt.Dimension(550, 600));
+
+        if (ships.music == true) {
+            jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/buttonSOUND.png"))); // NOI18N
+
+        } else {
+            jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/buttonMUTEXT.png"))); // NOI18N
         }
-        
-       
+        jButton1.setMaximumSize(new java.awt.Dimension(150, 50));
+        jButton1.setMinimumSize(new java.awt.Dimension(150, 50));
+        jButton1.setPreferredSize(new java.awt.Dimension(150, 50));
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setBorder(null);
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/buttonPLAY.png"))); // NOI18N
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/buttonGUIDE.png"))); // NOI18N
+        jButton5.setMaximumSize(new java.awt.Dimension(150, 50));
+        jButton5.setMinimumSize(new java.awt.Dimension(150, 50));
+        jButton5.setPreferredSize(new java.awt.Dimension(150, 70));
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/buttonEXIT.png"))); // NOI18N
+        jButton3.setMaximumSize(new java.awt.Dimension(150, 50));
+        jButton3.setMinimumSize(new java.awt.Dimension(150, 50));
+        jButton3.setPreferredSize(new java.awt.Dimension(150, 70));
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/buttonSCORE.png"))); // NOI18N
+        jButton4.setMaximumSize(new java.awt.Dimension(150, 70));
+        jButton4.setMinimumSize(new java.awt.Dimension(150, 70));
+        jButton4.setOpaque(true);
+        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton4.setPreferredSize(new java.awt.Dimension(150, 70));
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/source/logo.png"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(170, 170, 170)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel1)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(22, 22, 22)))
+                                .addContainerGap(180, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        pack();
+        setLocationRelativeTo(null);
+        //
         jPanel1.setOpaque(false); // đặt panel là không đục (transparent)
         jPanel1.setLayout(new BorderLayout());
         jPanel1.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
         JLabel background = new JLabel(new ImageIcon("src\\source\\background.jpg"));
         jPanel1.add(background, BorderLayout.CENTER);
-        JFrame frame = new JFrame();
+        ImageIcon img = new ImageIcon("src\\source\\logo.png");
+        this.setIconImage(img.getImage());
         // Thiết lập panel cho JFrame
         setContentPane(jPanel1);
         // Các thiết lập khác cho JFrame
-        setTitle("Battle Ship");
-        setSize(600, 550);
-        background.setBounds(0, 0, 600, 550);
+        setTitle("Tàu chiến");
+        setSize(550, 600);
+        background.setBounds(0, 0, 550, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
-       
->>>>>>> ecd26d08486b8a65cc7663aabbca2259633d60ca
     }
 
     /**
@@ -113,65 +232,68 @@ public class Home extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        button1 = new Main.Button();
-        button2 = new Main.Button();
-        button4 = new Main.Button();
-        button5 = new Main.Button();
-        button6 = new Main.Button();
+        jButton1 = new Main.Button();
+        jButton2 = new Main.Button();
+        jButton5 = new Main.Button();
+        jButton3 = new Main.Button();
+        jButton4 = new Main.Button();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(70, 156, 159));
+        setPreferredSize(new java.awt.Dimension(550, 600));
         setResizable(false);
-        setSize(new java.awt.Dimension(500, 400));
+        setSize(new java.awt.Dimension(550, 600));
 
         jPanel1.setBackground(new java.awt.Color(70, 156, 159));
+        jPanel1.setPreferredSize(new java.awt.Dimension(550, 600));
 
-        button1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/source/nutBatAm.png"))); // NOI18N
-        button1.setMaximumSize(new java.awt.Dimension(150, 50));
-        button1.setMinimumSize(new java.awt.Dimension(150, 50));
-        button1.setPreferredSize(new java.awt.Dimension(150, 50));
-        button1.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/buttonSOUND.png"))); // NOI18N
+        jButton1.setMaximumSize(new java.awt.Dimension(150, 50));
+        jButton1.setMinimumSize(new java.awt.Dimension(150, 50));
+        jButton1.setPreferredSize(new java.awt.Dimension(150, 50));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button1ActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
 
-        button2.setBorder(null);
-        button2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/source/nutChoiNgay.png"))); // NOI18N
-        button2.addActionListener(new java.awt.event.ActionListener() {
+        jButton2.setBorder(null);
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/buttonPLAY.png"))); // NOI18N
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button2ActionPerformed(evt);
+                jButton2ActionPerformed(evt);
             }
         });
 
-        button4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/source/nutXemHuongDan.png"))); // NOI18N
-        button4.setMaximumSize(new java.awt.Dimension(150, 50));
-        button4.setMinimumSize(new java.awt.Dimension(150, 50));
-        button4.setPreferredSize(new java.awt.Dimension(150, 50));
-        button4.addActionListener(new java.awt.event.ActionListener() {
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/buttonGUIDE.png"))); // NOI18N
+        jButton5.setMaximumSize(new java.awt.Dimension(150, 50));
+        jButton5.setMinimumSize(new java.awt.Dimension(150, 50));
+        jButton5.setPreferredSize(new java.awt.Dimension(150, 70));
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button4ActionPerformed(evt);
+                jButton5ActionPerformed(evt);
             }
         });
 
-        button5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/source/nutthoat.png"))); // NOI18N
-        button5.setMaximumSize(new java.awt.Dimension(150, 50));
-        button5.setMinimumSize(new java.awt.Dimension(150, 50));
-        button5.setPreferredSize(new java.awt.Dimension(150, 50));
-        button5.addActionListener(new java.awt.event.ActionListener() {
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/buttonEXIT.png"))); // NOI18N
+        jButton3.setMaximumSize(new java.awt.Dimension(150, 50));
+        jButton3.setMinimumSize(new java.awt.Dimension(150, 50));
+        jButton3.setPreferredSize(new java.awt.Dimension(150, 70));
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button5ActionPerformed(evt);
+                jButton3ActionPerformed(evt);
             }
         });
 
-        button6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/source/nutXemDiemSo.png"))); // NOI18N
-        button6.setMaximumSize(new java.awt.Dimension(150, 50));
-        button6.setMinimumSize(new java.awt.Dimension(150, 50));
-        button6.setPreferredSize(new java.awt.Dimension(150, 50));
-        button6.addActionListener(new java.awt.event.ActionListener() {
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/buttonSCORE.png"))); // NOI18N
+        jButton4.setMaximumSize(new java.awt.Dimension(150, 70));
+        jButton4.setMinimumSize(new java.awt.Dimension(150, 70));
+        jButton4.setOpaque(true);
+        jButton4.setPreferredSize(new java.awt.Dimension(150, 70));
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button6ActionPerformed(evt);
+                jButton4ActionPerformed(evt);
             }
         });
 
@@ -183,36 +305,36 @@ public class Home extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(184, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addContainerGap(175, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(217, 217, 217)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(button2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(button5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(button1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(button6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(button4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(170, 170, 170)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(22, 22, 22)))
+                .addContainerGap(180, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, Short.MAX_VALUE)
-                .addGap(17, 17, 17)
-                .addComponent(button2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(button6, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(button4, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(button5, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(100, 100, 100))
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -230,21 +352,20 @@ public class Home extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void button2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2ActionPerformed
+    private void button2ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-<<<<<<< HEAD
         setVisible(false); //you can't see me!
         dispose();
         History h = new History();
         h.getShips().music = ships.music;
         h.getShips().mp3 = ships.mp3;
         h.setVisible(true);
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        ImageIcon iconon = new ImageIcon("src\\source\\sound.png");
-        ImageIcon iconoff = new ImageIcon("src\\source\\x.png");
+        ImageIcon iconon = new ImageIcon("src/Icon/buttonSOUND.png");
+        ImageIcon iconoff = new ImageIcon("src/Icon/buttonMUTEXT.png");
         if (ships.music == true) {
             ships.music = false;
             jButton1.setIcon(iconoff);
@@ -253,7 +374,6 @@ public class Home extends javax.swing.JFrame {
             ships.mp3.play();
             ships.music = true;
             jButton1.setIcon(iconon);
-
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -278,17 +398,36 @@ public class Home extends javax.swing.JFrame {
         lv.getShips().mp3 = ships.mp3;
     }//GEN-LAST:event_jButton2ActionPerformed
 
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+
+        setVisible(false);
+        dispose();
+        Guide in = new Guide();
+        in.setVisible(true);
+        in.setBounds(getBounds());
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+//        setVisible(false);
+//        History in = new History();
+//        in.setVisible(true);
+//        in.setBounds(getBounds());
+//        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        dispose();
+        setVisible(false); //you can't see me!
+        dispose();
+        History h = new History();
+        h.getShips().music = ships.music;
+        h.getShips().mp3 = ships.mp3;
+        h.setVisible(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
+
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-//        Component panel = null;
-//        // TODO add your handling code here:
-//        // Button Exit
-//        int n = JOptionPane.showConfirmDialog(
-//                panel,
-//                "Bạn có muốn thoát không?",
-//                "Thoát",
-//                JOptionPane.YES_NO_OPTION);
-//        if (n == JOptionPane.YES_OPTION)
-//            System.exit(0);
+
         Message ms = new Message(this, true);
         ms.jtext.setText("Bạn có muốn thoát không ?");
         ms.jtext.setFont(new java.awt.Font("Times New Roman", 1, 28));
@@ -312,72 +451,6 @@ public class Home extends javax.swing.JFrame {
         });
         ms.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
-=======
-             ImageIcon icon = new ImageIcon("Images/icon/play.png");
-        Image img = icon.getImage().getScaledInstance(150, 50, Image.SCALE_SMOOTH);
-        ImageIcon fullSizeIcon = new ImageIcon(img);
-        button2.setIcon(fullSizeIcon);
-
-        // Add the button to the frame
-        getContentPane().add(button2, BorderLayout.CENTER);
-        setVisible(false); //you can't see me!
-        dispose();
-        new BattleShip().start();
-    }//GEN-LAST:event_button2ActionPerformed
-
-    private void button4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button4ActionPerformed
-        // TODO add your handling code here:
-        
-         setVisible(false); 
-         guide in = new guide();
-        in.setVisible(true);    
-        in.setBounds(getBounds());
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        dispose();
-    }//GEN-LAST:event_button4ActionPerformed
-
-    private void button5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button5ActionPerformed
-        // TODO add your handling code here:
-        
-          Component panel = null;
-        // TODO add your handling code here:
-        // Button Exit
-        int n = JOptionPane.showConfirmDialog(
-                panel,
-                "Bạn có muốn thoát không?",
-                "Thoát",
-                JOptionPane.YES_NO_OPTION);
-        if (n == JOptionPane.YES_OPTION)
-            System.exit(0);
-    }//GEN-LAST:event_button5ActionPerformed
-
-    private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
-        // TODO add your handling code here:
-        ImageIcon iconon = new ImageIcon("src\\source\\nutBatAm.png");
-       ImageIcon iconoff = new ImageIcon("src\\source\\nutTatAm.png");        
-          
-        if (sound==true) {
-            sound = false;
-            button1.setIcon(iconoff);
-            mp3.stop();
-        } else  {
-            mp3.play();
-            sound = true;
-            button1.setIcon(iconon);
-           
-        }
-    }//GEN-LAST:event_button1ActionPerformed
-
-    private void button6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button6ActionPerformed
-        // TODO add your handling code here:
-         setVisible(false); 
-         History in = new History();
-        in.setVisible(true);    
-        in.setBounds(getBounds());
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        dispose();
-    }//GEN-LAST:event_button6ActionPerformed
->>>>>>> ecd26d08486b8a65cc7663aabbca2259633d60ca
 
     /**
      * @param args the command line arguments
@@ -393,16 +466,24 @@ public class Home extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Home.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Home.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Home.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Home.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -418,11 +499,11 @@ public class Home extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private Main.Button button1;
-    private Main.Button button2;
-    private Main.Button button4;
-    private Main.Button button5;
-    private Main.Button button6;
+    private Main.Button jButton1;
+    private Main.Button jButton2;
+    private Main.Button jButton3;
+    private Main.Button jButton4;
+    private Main.Button jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

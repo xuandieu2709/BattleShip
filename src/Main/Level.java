@@ -11,6 +11,7 @@ import java.awt.Image;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 
@@ -279,10 +280,19 @@ public class Level extends javax.swing.JFrame {
         setVisible(false); //you can't see me!
         dispose();
         BattleShip bt = new BattleShip();
-        bt.start();
-        bt.getShips().levelMax = 1;
+        ships.levelMax = 1;
+        switch (ships.levelMax) {
+            case 1 ->
+                bt.namebot.setText("Bot Núp Lùm");
+            case 2 ->
+                bt.namebot.setText("Bot Pờ Rồ");
+            case 3 ->
+                bt.namebot.setText("Bot Siêu Cấp");
+        }
+        bt.getShips().levelMax = ships.levelMax;
         bt.getShips().music = ships.music;
         bt.getShips().mp3 = ships.mp3;
+        bt.start();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -290,11 +300,19 @@ public class Level extends javax.swing.JFrame {
         setVisible(false); //you can't see me!
         dispose();
         BattleShip bt = new BattleShip();
-        bt.start();
-        bt.getShips().levelMax = 2;
+        ships.levelMax = 2;
+        switch (ships.levelMax) {
+            case 1 ->
+                bt.namebot.setText("Bot Núp Lùm");
+            case 2 ->
+                bt.namebot.setText("Bot Pờ Rồ");
+            case 3 ->
+                bt.namebot.setText("Bot Siêu Cấp");
+        }
+        bt.getShips().levelMax = ships.levelMax;
         bt.getShips().music = ships.music;
         bt.getShips().mp3 = ships.mp3;
-
+        bt.start();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -302,10 +320,19 @@ public class Level extends javax.swing.JFrame {
         setVisible(false); //you can't see me!
         dispose();
         BattleShip bt = new BattleShip();
-        bt.start();
-        bt.getShips().levelMax = 3;
+        ships.levelMax = 3;
+        switch (ships.levelMax) {
+            case 1 ->
+                bt.namebot.setText("Bot Núp Lùm");
+            case 2 ->
+                bt.namebot.setText("Bot Pờ Rồ");
+            case 3 ->
+                bt.namebot.setText("Bot Siêu Cấp");
+        }
+        bt.getShips().levelMax = ships.levelMax;
         bt.getShips().music = ships.music;
         bt.getShips().mp3 = ships.mp3;
+        bt.start();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
@@ -322,16 +349,24 @@ public class Level extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Level.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Level.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Level.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Level.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Level.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Level.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Level.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Level.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 

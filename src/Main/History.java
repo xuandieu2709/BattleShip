@@ -170,7 +170,7 @@ public class History extends javax.swing.JFrame {
         dispose();
         Home home = new Home(ships.music);
         home.getShips().music = ships.music;
-        home.getShips().mp3= ships.mp3;
+        home.getShips().mp3 = ships.mp3;
         home.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
