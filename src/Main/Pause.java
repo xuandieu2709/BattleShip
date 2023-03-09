@@ -67,7 +67,7 @@ public class Pause extends javax.swing.JDialog {
 
         jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        buttonContunine.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/btncontun.png"))); // NOI18N
+        buttonContunine.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/btncontunn.png"))); // NOI18N
         buttonContunine.setToolTipText("");
         buttonContunine.setBorder(null);
         buttonContunine.setOpaque(false);

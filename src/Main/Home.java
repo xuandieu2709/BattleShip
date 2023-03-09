@@ -54,12 +54,12 @@ public class Home extends javax.swing.JFrame {
 
     public Home(boolean music) {
         ships.music = music;
-        this.setDefaultCloseOperation(Home.EXIT_ON_CLOSE);
-        if (ships.music == true) {
-            ships.mp3.play();
-        } else {
-            ships.mp3.stop();
-        }
+        System.out.println("MUSIC:"+ships.music);
+//        if (ships.music == true) {
+//            ships.mp3.play();
+//        } else {
+//            ships.mp3.stop();
+//        }
         initCompo();
         // Thiết lập panel cho JFrame
         // Các thiết lập khác cho JFrame
@@ -122,6 +122,7 @@ public class Home extends javax.swing.JFrame {
         jButton5.setMaximumSize(new java.awt.Dimension(150, 50));
         jButton5.setMinimumSize(new java.awt.Dimension(150, 50));
         jButton5.setPreferredSize(new java.awt.Dimension(150, 70));
+        jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
@@ -152,7 +153,7 @@ public class Home extends javax.swing.JFrame {
         });
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/source/logo.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/logo.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -208,7 +209,7 @@ public class Home extends javax.swing.JFrame {
         jPanel1.setOpaque(false); // đặt panel là không đục (transparent)
         jPanel1.setLayout(new BorderLayout());
         jPanel1.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        JLabel background = new JLabel(new ImageIcon("src\\source\\background.jpg"));
+        JLabel background = new JLabel(new ImageIcon("src\\Icon\\background.jpg"));
         jPanel1.add(background, BorderLayout.CENTER);
         ImageIcon img = new ImageIcon("src\\source\\logo.png");
         this.setIconImage(img.getImage());
@@ -393,9 +394,9 @@ public class Home extends javax.swing.JFrame {
         this.setVisible(false);
         dispose();
         Level lv = new Level();
-        lv.setVisible(true);
         lv.getShips().music = ships.music;
         lv.getShips().mp3 = ships.mp3;
+        lv.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
 
@@ -404,10 +405,13 @@ public class Home extends javax.swing.JFrame {
 
         setVisible(false);
         dispose();
-        Guide in = new Guide();
-        in.setVisible(true);
-        in.setBounds(getBounds());
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        Guide guide = new Guide();
+        guide.getShips().music = ships.music;
+        guide.getShips().mp3 = ships.mp3;
+//        guide.setBounds(getBounds());
+//        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        guide.setVisible(true);
+
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed

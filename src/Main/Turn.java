@@ -8,7 +8,9 @@ import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 /**
  *
@@ -18,7 +20,19 @@ public class Turn extends javax.swing.JDialog {
 
     /**
      * Creates new form Turn
+     * @param owner
+     * @param title
+     * @param modal
      */
+    public Turn(JFrame owner, String title, boolean modal) {
+        super(owner, title, modal);
+        init();
+    }
+
+    public Turn(JFrame owner, boolean modal) {
+        super(owner, modal);
+        init();
+    }
     public Turn() {
         init();
     }
@@ -35,21 +49,19 @@ public class Turn extends javax.swing.JDialog {
             }
         };
         jbtnClose = new javax.swing.JButton();
-        jtext = new javax.swing.JLabel();
+        jtext = new javax.swing.JLabel("", SwingConstants.CENTER);
 
         jbtnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/buttonOKE.png"))); // NOI18N
         jbtnClose.setBorder(null);
-        jbtnClose.setMaximumSize(new java.awt.Dimension(40, 40));
-        jbtnClose.setMinimumSize(new java.awt.Dimension(40, 40));
         jbtnClose.setOpaque(false);
-        jbtnClose.setPreferredSize(new java.awt.Dimension(40, 40));
+        jbtnClose.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbtnClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtnCloseActionPerformed(evt);
             }
         });
 
-        jtext.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jtext.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jtext.setForeground(new java.awt.Color(255, 255, 255));
         jtext.setText("jLabel1");
 
@@ -58,23 +70,23 @@ public class Turn extends javax.swing.JDialog {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
+                .addContainerGap(33, Short.MAX_VALUE)
                 .addComponent(jtext, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jbtnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25))
+                .addGap(23, 23, 23))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(jtext, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(36, 36, 36)
+                        .addComponent(jbtnClose))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(jbtnClose, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(24, Short.MAX_VALUE))
+                        .addGap(23, 23, 23)
+                        .addComponent(jtext, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -107,10 +119,7 @@ public class Turn extends javax.swing.JDialog {
 
         jbtnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/buttonOKE.png"))); // NOI18N
         jbtnClose.setBorder(null);
-        jbtnClose.setMaximumSize(new java.awt.Dimension(40, 40));
-        jbtnClose.setMinimumSize(new java.awt.Dimension(40, 40));
         jbtnClose.setOpaque(false);
-        jbtnClose.setPreferredSize(new java.awt.Dimension(40, 40));
         jbtnClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtnCloseActionPerformed(evt);
@@ -126,23 +135,23 @@ public class Turn extends javax.swing.JDialog {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
+                .addContainerGap(33, Short.MAX_VALUE)
                 .addComponent(jtext, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jbtnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25))
+                .addGap(23, 23, 23))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(jtext, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(36, 36, 36)
+                        .addComponent(jbtnClose))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(jbtnClose, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(24, Short.MAX_VALUE))
+                        .addGap(23, 23, 23)
+                        .addComponent(jtext, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

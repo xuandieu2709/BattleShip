@@ -8,9 +8,11 @@ import Model.States;
 import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
@@ -281,17 +283,11 @@ public class Level extends javax.swing.JFrame {
         dispose();
         BattleShip bt = new BattleShip();
         ships.levelMax = 1;
-        switch (ships.levelMax) {
-            case 1 ->
-                bt.namebot.setText("Bot Núp Lùm");
-            case 2 ->
-                bt.namebot.setText("Bot Pờ Rồ");
-            case 3 ->
-                bt.namebot.setText("Bot Siêu Cấp");
-        }
+        bt.namebot.setText("Bot Núp Lùm");
         bt.getShips().levelMax = ships.levelMax;
         bt.getShips().music = ships.music;
         bt.getShips().mp3 = ships.mp3;
+        System.out.println("Bt MUSIC"+bt.getShips().music);
         bt.start();
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -301,17 +297,11 @@ public class Level extends javax.swing.JFrame {
         dispose();
         BattleShip bt = new BattleShip();
         ships.levelMax = 2;
-        switch (ships.levelMax) {
-            case 1 ->
-                bt.namebot.setText("Bot Núp Lùm");
-            case 2 ->
-                bt.namebot.setText("Bot Pờ Rồ");
-            case 3 ->
-                bt.namebot.setText("Bot Siêu Cấp");
-        }
+        bt.namebot.setText("Bot Pờ Rồ");
         bt.getShips().levelMax = ships.levelMax;
         bt.getShips().music = ships.music;
         bt.getShips().mp3 = ships.mp3;
+        System.out.println("Bt MUSIC"+bt.getShips().music);
         bt.start();
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -321,17 +311,11 @@ public class Level extends javax.swing.JFrame {
         dispose();
         BattleShip bt = new BattleShip();
         ships.levelMax = 3;
-        switch (ships.levelMax) {
-            case 1 ->
-                bt.namebot.setText("Bot Núp Lùm");
-            case 2 ->
-                bt.namebot.setText("Bot Pờ Rồ");
-            case 3 ->
-                bt.namebot.setText("Bot Siêu Cấp");
-        }
+        bt.namebot.setText("Bot Siêu Cấp");
         bt.getShips().levelMax = ships.levelMax;
         bt.getShips().music = ships.music;
         bt.getShips().mp3 = ships.mp3;
+        System.out.println("Bt MUSIC"+bt.getShips().music);
         bt.start();
     }//GEN-LAST:event_jButton3ActionPerformed
 

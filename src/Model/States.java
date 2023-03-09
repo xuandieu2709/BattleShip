@@ -14,6 +14,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -75,6 +76,14 @@ public class States {
 //        }
     }
 
+    public void TurnONOrOFFMUSIC() {
+        if (music == true) {
+            mp3.play();
+        } else {
+            mp3.stop();
+        }
+    }
+
     public void resetShips() {
         battleship.rotateTo0();
         battleship.setX(battleship.XStart);
@@ -127,73 +136,89 @@ public class States {
                 start = false;
                 endgame = true;
                 checkWin = true;
-                JOptionPane.showMessageDialog(null, "Bạn đã thắng");
-                Score rs = new Score();
-                rs.jTextField1.setText(String.valueOf(scorePlayer));
-                //
-                rs.setVisible(true);
-                LocalDateTime currentDateTime = LocalDateTime.now();
-                DateTimeFormatter sm = DateTimeFormatter.ofPattern("hh:mm:ss dd/MM//yyyy");
-                String strDate = sm.format(currentDateTime);
-                Model.Score score = new Model.Score();
-                List<Model.Score> list = score.ReadFile();
-                Model.Score score1 = new Model.Score();
-                switch (levelMax) {
-                    case 3:
-                        score1 = new Model.Score("Noname", String.valueOf(strDate), scorePlayer, sumHitPlayer, sumMissPlayer, 3, true);
-                        break;
-                    case 2:
-                        score1 = new Model.Score("Noname", String.valueOf(strDate), scorePlayer, sumHitPlayer, sumMissPlayer, 2, true);
-                        break;
-                    default:
-                        score1 = new Model.Score("Noname", String.valueOf(strDate), scorePlayer, sumHitPlayer, sumMissPlayer, 1, true);
-                        break;
-                }
-                list.add(score1);
-                score.WriteFile(list);
+//                JOptionPane.showMessageDialog(null, "Bạn đã thắng");
+//                Score rs = new Score();
+//                rs.jTextField1.setText(String.valueOf(scorePlayer));
+//                rs.jtitle.setText("Thắng");
+//                //
+//                switch (levelMax) {
+//                    case 1:
+//                        rs.jbtext.setText("Cấp độ: Dễ");
+//                        rs.ships.levelMax = 1;
+//                        break;
+//                    case 2:
+//                        rs.jbtext.setText("Cấp độ: Vừa");
+//                        rs.ships.levelMax = 2;
+//                        break;
+//                    case 3:
+//                        rs.jbtext.setText("Cấp độ: Khó");
+//                        rs.ships.levelMax = 3;
+//                        break;
+//                }
+//                rs.setVisible(true);
+//                LocalDateTime currentDateTime = LocalDateTime.now();
+//                DateTimeFormatter sm = DateTimeFormatter.ofPattern("hh:mm:ss dd/MM//yyyy");
+//                String strDate = sm.format(currentDateTime);
+//                Model.Score score = new Model.Score();
+//                List<Model.Score> list = score.ReadFile();
+//                Model.Score score1 = new Model.Score();
+//                switch (levelMax) {
+//                    case 3:
+//                        score1 = new Model.Score("Noname", String.valueOf(strDate), scorePlayer, sumHitPlayer, sumMissPlayer, 3, true);
+//                        break;
+//                    case 2:
+//                        score1 = new Model.Score("Noname", String.valueOf(strDate), scorePlayer, sumHitPlayer, sumMissPlayer, 2, true);
+//                        break;
+//                    default:
+//                        score1 = new Model.Score("Noname", String.valueOf(strDate), scorePlayer, sumHitPlayer, sumMissPlayer, 1, true);
+//                        break;
+//                }
+//                list.add(score1);
+//                score.WriteFile(list);
             } else if (battleship.getLife() == 0 && cruise.getLife() == 0 && destroyer1.getLife() == 0 && destroyer2.getLife() == 0 && submarine.getLife() == 0) {
                 start = false;
                 endgame = true;
                 checkWin = false;
-                JOptionPane.showMessageDialog(null, "Bạn đã thua");
-                Score rs = new Score();
-                rs.jTextField1.setText(String.valueOf(scorePlayer));
-                switch (levelMax) {
-                    case 1:
-                        rs.jbtext.setText("Dễ");
-                        rs.level = 1;
-                        break;
-                    case 2:
-                        rs.jbtext.setText("Vừa");
-                        rs.level = 2;
-                        break;
-                    case 3:
-                        rs.jbtext.setText("Khó");
-                        rs.level = 3;
-                        break;
-                }
-                rs.setVisible(true);
-//                System.out.println("Điểm của bạn là:"+scorePlayer);
-                //
-                LocalDateTime currentDateTime = LocalDateTime.now();
-                DateTimeFormatter sm = DateTimeFormatter.ofPattern("hh:mm:ss dd/MM//yyyy");
-                String strDate = sm.format(currentDateTime);
-                Model.Score score = new Model.Score();
-                List<Model.Score> list = score.ReadFile();
-                Model.Score score1 = new Model.Score();
-                switch (levelMax) {
-                    case 3:
-                        score1 = new Model.Score("Noname", String.valueOf(strDate), scorePlayer, sumHitPlayer, sumMissPlayer, 3, false);
-                        break;
-                    case 2:
-                        score1 = new Model.Score("Noname", String.valueOf(strDate), scorePlayer, sumHitPlayer, sumMissPlayer, 2, false);
-                        break;
-                    case 1:
-                        score1 = new Model.Score("Noname", String.valueOf(strDate), scorePlayer, sumHitPlayer, sumMissPlayer, 1, false);
-                        break;
-                }
-                list.add(score1);
-                score.WriteFile(list);
+//                JOptionPane.showMessageDialog(null, "Bạn đã thua");
+//                Score rs = new Score();
+//                rs.jTextField1.setText(String.valueOf(scorePlayer));
+//                rs.jtitle.setText("Thua");
+//                switch (levelMax) {
+//                    case 1:
+//                        rs.jbtext.setText("Cấp độ: Dễ");
+//                        rs.ships.levelMax = 1;
+//                        break;
+//                    case 2:
+//                        rs.jbtext.setText("Cấp độ: Vừa");
+//                        rs.ships.levelMax = 2;
+//                        break;
+//                    case 3:
+//                        rs.jbtext.setText("Cấp độ: Khó");
+//                        rs.ships.levelMax = 3;
+//                        break;
+//                }
+//                rs.setVisible(true);
+////                System.out.println("Điểm của bạn là:"+scorePlayer);
+//                //
+//                LocalDateTime currentDateTime = LocalDateTime.now();
+//                DateTimeFormatter sm = DateTimeFormatter.ofPattern("hh:mm:ss dd/MM//yyyy");
+//                String strDate = sm.format(currentDateTime);
+//                Model.Score score = new Model.Score();
+//                List<Model.Score> list = score.ReadFile();
+//                Model.Score score1 = new Model.Score();
+//                switch (levelMax) {
+//                    case 3:
+//                        score1 = new Model.Score("Noname", String.valueOf(strDate), scorePlayer, sumHitPlayer, sumMissPlayer, 3, false);
+//                        break;
+//                    case 2:
+//                        score1 = new Model.Score("Noname", String.valueOf(strDate), scorePlayer, sumHitPlayer, sumMissPlayer, 2, false);
+//                        break;
+//                    case 1:
+//                        score1 = new Model.Score("Noname", String.valueOf(strDate), scorePlayer, sumHitPlayer, sumMissPlayer, 1, false);
+//                        break;
+//                }
+//                list.add(score1);
+//                score.WriteFile(list);
             } else if (!turn) {
                 switch (levelMax) {
                     case 3:
