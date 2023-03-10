@@ -63,16 +63,6 @@ public class Home extends javax.swing.JFrame {
         initCompo();
         // Thiết lập panel cho JFrame
         // Các thiết lập khác cho JFrame
-        setTitle("Tàu chiến");
-        setSize(550, 600);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(70, 156, 159));
-        setResizable(false);
-        setSize(new java.awt.Dimension(550, 600));
-        // Thiết lập panel cho JFrame
-        setContentPane(jPanel1);
-        setVisible(true);
     }
 
     public void initCompo() {
@@ -206,12 +196,23 @@ public class Home extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
         //
+        setTitle("Tàu chiến");
+        setSize(550, 600);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(70, 156, 159));
+        setResizable(false);
+        setSize(new java.awt.Dimension(550, 600));
+        // Thiết lập panel cho JFrame
+        setContentPane(jPanel1);
+        setVisible(true);
+        //
         jPanel1.setOpaque(false); // đặt panel là không đục (transparent)
         jPanel1.setLayout(new BorderLayout());
         jPanel1.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
         JLabel background = new JLabel(new ImageIcon("src\\Icon\\background.jpg"));
         jPanel1.add(background, BorderLayout.CENTER);
-        ImageIcon img = new ImageIcon("src\\source\\logo.png");
+        ImageIcon img = new ImageIcon("src\\Icon\\logo.png");
         this.setIconImage(img.getImage());
         // Thiết lập panel cho JFrame
         setContentPane(jPanel1);

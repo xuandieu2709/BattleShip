@@ -35,7 +35,7 @@ public class Guide extends javax.swing.JFrame {
 
     public Guide() {
 //        initCompo();
-initComponents();
+        initCompo();
         ImageIcon img = new ImageIcon("src\\Icon\\logo.png");
         this.setIconImage(img.getImage());
         setTitle("Hướng dẫn chơi");
@@ -89,6 +89,7 @@ initComponents();
         jTextPane1.setCaretColor(new java.awt.Color(255, 193, 37));
         jTextPane1.setDisabledTextColor(new java.awt.Color(238, 118, 0));
         jTextPane1.setMargin(new java.awt.Insets(10, 10, 10, 10));
+        jTextPane1.setContentType("text/html");
         jTextPane1.setOpaque(false);
         jTextPane1.setSelectionColor(new java.awt.Color(238, 118, 0));
         jScrollPane1.setViewportView(jTextPane1);

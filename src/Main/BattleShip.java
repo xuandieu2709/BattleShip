@@ -112,6 +112,8 @@ public class BattleShip extends JFrame implements Runnable {
                 ms.setVisible(true);
             }
         });
+        ImageIcon imgg = new ImageIcon("src\\Icon\\logo.png");
+        this.setIconImage(imgg.getImage());
         this.setTitle("Tàu chiến");
         canvas = new Canvas();
         canvas.setPreferredSize(new Dimension(WIDTH, HEIGHT));
@@ -144,7 +146,7 @@ public class BattleShip extends JFrame implements Runnable {
         jpheader.setBackground(colorCustom);
         jpheader.setLayout(null);
         JButton player = new JButton();
-        JLabel nameplayer = new JLabel("Du");
+        JLabel nameplayer = new JLabel("Bạn");
         nameplayer.setFont(new Font("Times New Roman", Font.PLAIN, 16));
         JButton bot = new JButton();
         namebot.setFont(new Font("Times New Roman", Font.PLAIN, 16));

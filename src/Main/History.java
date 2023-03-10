@@ -108,6 +108,9 @@ public class History extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(70, 156, 159));
         setResizable(false);
+        ImageIcon img = new ImageIcon("src\\Icon\\logo.png");
+        this.setIconImage(img.getImage());
+        setTitle("Thành tích");
 
         jPanel1.setBackground(new java.awt.Color(70, 156, 159));
         jPanel1.setBorder(new javax.swing.border.MatteBorder(null));
@@ -165,6 +168,7 @@ public class History extends javax.swing.JFrame {
 //        jTable1.setSelectionBackground(new java.awt.Color());
         jTable1.setSelectionForeground(new java.awt.Color(208, 114, 35));
         jTable1.getTableHeader().setOpaque(false);
+        jTable1.setAutoCreateRowSorter(true);
         jTable1.setShowGrid(false);
         jTable1.setShowVerticalLines(false);
         jTable1.getTableHeader().setReorderingAllowed(false);

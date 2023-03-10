@@ -153,16 +153,16 @@ public class Enemy implements GameObject {
 //        int x;
 //        int y;
 //        boolean exist = true;
-//        System.out.println("Board Bot");
-//        for (int i = 0; i < 10; i++) {
-//            for (int j = 0; j < 10; j++) {
-//                System.out.print(board[i][j]);
-//                System.out.print("\t");
-//                if (j == 9) {
-//                    System.out.println("\n");
-//                }
-//            }
-//        }
+            //        System.out.println("Board Bot");
+            //        for (int i = 0; i < 10; i++) {
+            //            for (int j = 0; j < 10; j++) {
+            //                System.out.print(board[i][j]);
+            //                System.out.print("\t");
+            //                if (j == 9) {
+            //                    System.out.println("\n");
+            //                }
+            //            }
+            //        }
 //        while (exist) {
 //            boolean hit = false;
 ////            x = (int) (Math.random() * 10);
